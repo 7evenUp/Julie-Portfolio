@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "ashel-front-style": {
+      "source": "7evenUp/ashel-skills",
+      "sourceType": "github",
+      "skillPath": "skills/ashel-front-style/SKILL.md",
+      "computedHash": "d43499900d003f52fd91f9691ec141a977220454b1942e499b1ee13bae70902c"
+    }
+  }
+}
