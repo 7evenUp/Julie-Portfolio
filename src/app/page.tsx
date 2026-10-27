@@ -6,7 +6,7 @@ import { ProjectArch } from "@/components/project-arch"
 import { ProjectGrid } from "@/components/project-grid"
 import { Contact } from "@/components/contact"
 import { CatSticker } from "@/components/cat-sticker"
-import { ArrowDown, ArrowUpRight, Asterisk, Globe } from "@/components/icons"
+import { ArrowUpRight, Asterisk, Globe } from "@/components/icons"
 import { site, siteUrl, description } from "@/content/site"
 
 export const metadata: Metadata = {
@@ -113,13 +113,6 @@ export default function Home() {
             </div>
           </div>
           <ProjectArch />
-          <div className="hero-footer mono">
-            <span>Идея → Чувство → Форма</span>
-            <a href="#work">
-              Дальше — интереснее <ArrowDown />
-            </a>
-            <span>Портфолио / 2026</span>
-          </div>
         </section>
         <section
           className="work-section page-width"
