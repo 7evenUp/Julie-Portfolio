@@ -9,6 +9,8 @@ import { ArrowUpRight } from "./icons";
 export function ProjectGrid() {
   const [category, setCategory] = useState<Category>("Все работы");
   const visibleProjects = projects.filter((project) => category === "Все работы" || project.category === category);
+  const hasRealProjects = projects.some((project) => !project.isDemo);
+  const hasDemoProjects = projects.some((project) => project.isDemo);
 
   return (
     <>
@@ -16,7 +18,7 @@ export function ProjectGrid() {
         <div className="project-filters" role="group" aria-label="Категории проектов">
           {categories.map((item) => <button key={item} type="button" onClick={() => setCategory(item)} className={category === item ? "active" : ""} aria-pressed={category === item}>{item}{item === "Все работы" && <sup>{String(projects.length).padStart(2, "0")}</sup>}</button>)}
         </div>
-        <span className="mono demo-label"><span />Демонстрационные концепции</span>
+        <span className="mono demo-label"><span />{hasRealProjects && hasDemoProjects ? "Авторские проекты и демо-концепции" : hasDemoProjects ? "Демонстрационные концепции" : "Авторские проекты"}</span>
       </div>
       <p className="sr-only" role="status">Показано проектов: {visibleProjects.length}</p>
       <div className={`project-grid ${category !== "Все работы" ? "is-filtered" : ""}`}>
@@ -28,7 +30,7 @@ export function ProjectGrid() {
                 <span className="project-index mono">{String(projects.indexOf(project) + 1).padStart(2, "0")} / {project.category}</span>
                 <span className="project-open"><ArrowUpRight /></span>
               </div>
-              <div className="project-caption"><div><h3>{project.title}</h3><p>{project.summary}</p></div><span className="mono">{project.year}<ArrowUpRight /></span></div>
+              <div className="project-caption"><div><h3>{project.title}{project.isDemo && <span className="project-demo-badge mono">Демо</span>}</h3><p>{project.summary}</p></div><span className="mono">{project.year}<ArrowUpRight /></span></div>
             </Link>
             <span className="project-grid-cross" aria-hidden="true">+</span>
           </article>

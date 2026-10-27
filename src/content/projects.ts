@@ -21,7 +21,7 @@ export type Project = {
 /**
  * Add projects here. Place images in public/images/projects/.
  * Keep slugs unique and stable: these are the search-friendly project URLs.
- * Replace demo content and set isDemo: false when publishing real work.
+ * Keep isDemo: false for actual portfolio projects; demos may stay alongside them.
  */
 export const projects: Project[] = [
   {
@@ -93,6 +93,31 @@ export const projects: Project[] = [
     isDemo: true,
     layout: "last",
     background: "#d2d8e5",
+  },
+  {
+    slug: "midnight-session",
+    title: "Midnight Session",
+    category: "Афиши",
+    year: "2026",
+    summary: "Рекламная афиша джазового вечера при свечах.",
+    description: "Авторская визуальная концепция рекламной афиши для камерного джазового вечера с живой музыкой при свечах. В центре композиции — саксофон и тёплый свет, передающие атмосферу ночной музыкальной сессии. Контрастная типографика объединяет выразительный заголовок и информацию о событии. В рамках проекта также разработан дизайн билета.",
+    services: ["Визуальная концепция", "Дизайн афиши", "Типографика", "Дизайн билета"],
+    cover: {
+      src: "/images/projects/midnight-session/poster.webp",
+      alt: "Афиша Midnight Session: золотой саксофон в тёплом свете свечей и контрастная типографика",
+      width: 1920,
+      height: 1845,
+    },
+    gallery: [
+      { src: "/images/projects/midnight-session/presentation.webp", alt: "Midnight Session — презентация афиши джазового вечера в интерьере", width: 1920, height: 1845 },
+      { src: "/images/projects/midnight-session/concept.webp", alt: "Типографика и колористика Midnight Session: Montserrat, FoglihtenNo06 и светлая палитра на тёмном фоне", width: 1920, height: 1845 },
+      { src: "/images/projects/midnight-session/details.webp", alt: "Дизайн билетов Midnight Session и детали рекламной афиши", width: 1920, height: 1845 },
+      { src: "/images/projects/midnight-session/mockup.webp", alt: "Афиша Midnight Session на объёмном макете и завершение авторской презентации", width: 1920, height: 1846 },
+    ],
+    url: "https://www.behance.net/gallery/255956425/Midnight-Session-Posters-Design-Concept",
+    isDemo: false,
+    layout: "wide",
+    background: "#c8aa87",
   },
 ];
 
