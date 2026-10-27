@@ -620,6 +620,7 @@ p {
   scroll-margin-top: 25px;
 }
 .work-heading {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -914,6 +915,7 @@ p {
   margin-bottom: 67px;
 }
 .about-label {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -987,6 +989,7 @@ p {
   border-top: 1px solid var(--line);
 }
 .contact-main {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;

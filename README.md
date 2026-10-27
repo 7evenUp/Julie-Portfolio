@@ -65,3 +65,9 @@ npm run dev
 Все пять концепций вымышлены и подписаны как демонстрационные. Оригинальные SVG-макеты лежат в `public/images/projects/`; их исходный генератор — `scripts/generate-demo-assets.mjs`.
 
 Базовая версия предназначена для экранов от 1120 px. Отдельных мобильных стилей, CMS, форм отправки и аналитики пока нет.
+
+### Декоративные котики
+
+Мемные фото-стикеры размещены у портрета, в заголовке работ, в блоке «Обо мне» и в контактах. Локальные WebP-файлы с прозрачностью лежат в `public/images/stickers/`, выбор котика задаёт `src/components/cat-sticker.tsx`, размеры, повороты и обводку — `src/components/cat-sticker.module.css`. Стикеры не перехватывают нажатия и скрыты от скринридеров.
+
+Источники изображений: [Polite Cat — Know Your Meme](https://knowyourmeme.com/photos/3224148-polite-cat), [Popcat — Emoji.gg](https://cdn3.emoji.gg/emojis/77102-popcat.gif), [Astonished Cat — Emoji.gg](https://cdn3.emoji.gg/emojis/2319-astonished-cat.png). Popcat используется как статичный кадр.

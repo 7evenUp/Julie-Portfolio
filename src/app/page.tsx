@@ -5,6 +5,7 @@ import { AmbientSculpture } from "@/components/ambient"
 import { ProjectArch } from "@/components/project-arch"
 import { ProjectGrid } from "@/components/project-grid"
 import { Contact } from "@/components/contact"
+import { CatSticker } from "@/components/cat-sticker"
 import { ArrowDown, ArrowUpRight, Asterisk, Globe } from "@/components/icons"
 import { site, siteUrl, description } from "@/content/site"
 
@@ -94,6 +95,7 @@ export default function Home() {
                 <span className="portrait-corner portrait-corner--tl" />
                 <span className="portrait-corner portrait-corner--br" />
               </div>
+              <CatSticker cat="polite" placement="portrait" />
             </div>
             <div className="hero-copy">
               <div className="hero-eyebrow mono">
@@ -129,6 +131,7 @@ export default function Home() {
             <span>Собраны с вниманием</span>
           </div>
           <div className="work-heading">
+            <CatSticker cat="surprised" placement="work" />
             <h2 id="work-title">
               Разные задачи.
               <br />
@@ -162,6 +165,7 @@ export default function Home() {
             <div className="about-label">
               <Asterisk />
               <span className="mono">Это я, Юлия.</span>
+              <CatSticker cat="pop" placement="about" />
             </div>
             <div>
               <h2 id="about-title">

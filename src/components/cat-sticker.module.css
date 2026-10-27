@@ -1,0 +1,90 @@
+.sticker {
+  position: absolute;
+  display: block;
+  z-index: 3;
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(var(--tilt, 0deg));
+}
+
+.sticker > img {
+  width: 100%;
+  height: auto;
+  filter:
+    drop-shadow(2px 0 0 #efefe8)
+    drop-shadow(-2px 0 0 #efefe8)
+    drop-shadow(0 2px 0 #efefe8)
+    drop-shadow(0 -2px 0 #efefe8)
+    drop-shadow(0 7px 9px #0005);
+}
+
+.sparkle {
+  position: absolute;
+  top: 5%;
+  right: -15%;
+  color: var(--accent);
+  font-size: 27px;
+  line-height: 1;
+}
+
+.sparkle::after {
+  content: "✦";
+  position: absolute;
+  top: 27px;
+  left: 15px;
+  font-size: 12px;
+}
+
+.portrait {
+  --tilt: 12deg;
+  right: -60px;
+  bottom: -16px;
+  width: clamp(90px, 7.5vw, 128px);
+}
+
+.work {
+  --tilt: -12deg;
+  left: 52%;
+  bottom: -8px;
+  width: clamp(100px, 8.2vw, 140px);
+}
+
+.work .sparkle {
+  right: auto;
+  left: -13%;
+  top: 20%;
+}
+
+.about {
+  --tilt: 9deg;
+  left: 132px;
+  top: 70px;
+  width: clamp(100px, 8.5vw, 145px);
+}
+
+.contact {
+  --tilt: -9deg;
+  right: 150px;
+  bottom: -12px;
+  width: clamp(128px, 10vw, 168px);
+}
+
+.contact .sparkle {
+  top: 10%;
+  right: -16%;
+  font-size: 33px;
+}
+
+@media (min-width: 1600px) {
+  .portrait {
+    right: -70px;
+  }
+
+  .about {
+    left: 150px;
+  }
+
+  .contact {
+    right: 180px;
+  }
+}
