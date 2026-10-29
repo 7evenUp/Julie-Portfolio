@@ -41,7 +41,7 @@ const ProjectCard = ({
         !isFiltered &&
           (index >= 5
             ? continuationLayouts[(index - 5) % continuationLayouts.length]
-            : projectLayouts[project.layout])
+            : projectLayouts[project.layout]),
       )}
     >
       <Link
@@ -81,7 +81,7 @@ const ProjectCard = ({
                 </span>
               )}
             </h3>
-            <p className="mt-[5px] text-[10px] leading-[1.6] text-muted wide:text-[12px]">
+            <p className="mt-[5px] text-[10px] leading-[1.6] text-muted wide:text-xs">
               {project.summary}
             </p>
           </div>
@@ -103,10 +103,11 @@ const ProjectCard = ({
 }
 
 export const ProjectGrid = () => {
-  const [selectedCategory, setSelectedCategory] = useState<Category>("Все работы")
+  const [selectedCategory, setSelectedCategory] =
+    useState<Category>("Все работы")
   const isFiltered = selectedCategory !== "Все работы"
   const visibleProjects = projects.filter(
-    (project) => !isFiltered || project.category === selectedCategory
+    (project) => !isFiltered || project.category === selectedCategory,
   )
 
   const hasRealProjects = projects.some((project) => !project.isDemo)
@@ -132,8 +133,9 @@ export const ProjectGrid = () => {
               type="button"
               onClick={() => setSelectedCategory(category)}
               className={cn(
-                "rounded-[30px] border border-transparent px-3.5 py-2.5 text-[10px] whitespace-nowrap text-[#aeb3a7] transition-[background,color,border-color] duration-250 hover:border-[#59604e] hover:text-accent wide:px-[18px] wide:py-[11px] wide:text-[12px]",
-                selectedCategory === category && "bg-ink text-page hover:text-page"
+                "rounded-[30px] border border-transparent px-3.5 py-2.5 text-[10px] whitespace-nowrap text-[#aeb3a7] transition-[background,color,border-color] duration-250 hover:border-[#59604e] hover:text-accent wide:px-[18px] wide:py-[11px] wide:text-xs",
+                selectedCategory === category &&
+                  "bg-ink text-page hover:text-page",
               )}
               aria-pressed={selectedCategory === category}
             >
@@ -159,7 +161,7 @@ export const ProjectGrid = () => {
       <div
         className={cn(
           "grid grid-cols-12 gap-x-6 pt-[42px] pb-[90px] wide:pb-[115px]",
-          isFiltered && "min-h-[550px] grid-cols-2 items-start gap-10"
+          isFiltered && "min-h-[550px] grid-cols-2 items-start gap-10",
         )}
       >
         {visibleProjects.map((project, index) => (

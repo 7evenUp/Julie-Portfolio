@@ -46,7 +46,7 @@ export const Contact = () => {
           {contacts.map((contact) =>
             contact.href ? (
               <a
-                className="flex items-center gap-4 border-b border-[#8d987d] pb-2.5 text-[12px] transition-colors duration-250 hover:text-accent"
+                className="flex items-center gap-4 border-b border-[#8d987d] pb-2.5 text-xs transition-colors duration-250 hover:text-accent"
                 key={contact.label}
                 href={contact.href}
                 target={
@@ -59,7 +59,7 @@ export const Contact = () => {
               </a>
             ) : (
               <div
-                className="min-w-[110px] border-b border-[#3b4333] pb-2.5 text-[12px] text-[#a3ad96]"
+                className="min-w-[110px] border-b border-[#3b4333] pb-2.5 text-xs text-[#a3ad96]"
                 key={contact.label}
               >
                 <span>{contact.label}</span>

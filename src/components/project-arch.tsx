@@ -51,7 +51,7 @@ export const ProjectArch = () => {
         <div className="absolute bottom-[clamp(24px,4svh,48px)] left-1/2 z-3 min-w-[340px] -translate-x-1/2 text-center">
           <a
             href="#work"
-            className="inline-flex items-center justify-center gap-6 rounded-[40px] border border-accent bg-accent px-[25px] py-[19px] text-[12px] font-semibold text-[#20251a] transition-[background,transform] duration-250 hover:-translate-y-[3px] hover:bg-[#e3ffac]"
+            className="inline-flex items-center justify-center gap-6 rounded-[40px] border border-accent bg-accent px-[25px] py-[19px] text-xs font-semibold text-[#20251a] transition-[background,transform] duration-250 hover:-translate-y-[3px] hover:bg-[#e3ffac]"
           >
             Посмотреть все проекты <ArrowDown className="size-[18px]" />
           </a>

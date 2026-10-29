@@ -332,6 +332,58 @@ export const projects: Project[] = [
     layout: "portrait",
     background: "#3021d9",
   },
+  {
+    slug: "forma",
+    title: "FORMA — мебель для практики и жизни",
+    url: "https://www.behance.net/gallery/257577373/FORMA-E-COMMERCE-Website-Design-Concept",
+    category: "Сайты",
+    year: "2026",
+    summary: "Интернет-магазин мебели для йоги, медитации и дома.",
+    description:
+      "Интернет-магазин FORMA объединяет мебель для йоги, медитации и жизни за пределами практики. Это взгляд на домашнее пространство, в котором движение и отдых одинаково важны.",
+    services: ["Веб-дизайн", "Дизайн интернет-магазина", "Мобильная адаптация"],
+    cover: {
+      src: "/images/projects/forma/cover.webp",
+      alt: "FORMA: скульптурное кресло из дерева и металла на фоне крупной терракотовой типографики в светлом интерьере",
+      width: 1600,
+      height: 945,
+    },
+    gallery: [
+      {
+        src: "/images/projects/forma/homepage-mockup.webp",
+        alt: "Главный экран интернет-магазина FORMA на ноутбуке: оливковый фон, голубое кресло и заголовок «Ваше тело чувствует разницу»",
+        width: 1600,
+        height: 1200,
+      },
+      {
+        src: "/images/projects/forma/desktop-mobile.webp",
+        alt: "Десктопная и мобильная версии FORMA: категории мебели, интерьерные фотографии и карточки лучших предложений",
+        width: 1600,
+        height: 1572,
+      },
+      {
+        src: "/images/projects/forma/materials-details.webp",
+        alt: "Детали главной страницы FORMA и мобильная адаптация: материалы мебели, блок о бренде, вопросы, отзывы и форма заявки",
+        width: 1600,
+        height: 1572,
+      },
+      {
+        src: "/images/projects/forma/catalog-product.webp",
+        alt: "Каталог FORMA с фильтрами и карточками мебели, мобильная версия каталога и быстрый просмотр голубого кресла",
+        width: 1600,
+        height: 1572,
+      },
+      {
+        src: "/images/projects/forma/checkout-account.webp",
+        alt: "Покупательские сценарии FORMA: корзина с мебелью, подтверждение оплаты и личный кабинет",
+        width: 1600,
+        height: 1308,
+      },
+    ],
+    isDemo: false,
+    layout: "medium",
+    background: "#faf3ed",
+  },
 ]
 
 export function getProject(slug: string) {

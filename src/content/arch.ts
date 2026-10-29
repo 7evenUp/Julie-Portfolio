@@ -8,7 +8,7 @@ export const arch = {
   durationSeconds: 16,
   items: [
     { id: "tete-a-tete", image: "/images/projects/tete-a-tete/arch.webp" },
-    { id: "forma", image: projects[1].cover.src },
+    { id: "forma", image: "/images/projects/forma/arch.webp" },
     { id: "wedding", image: projects[2].cover.src },
     { id: "lumi", image: projects[3].cover.src },
     {

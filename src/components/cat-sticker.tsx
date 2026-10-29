@@ -7,7 +7,11 @@ import styles from "./cat-sticker.module.css"
 const cats = {
   polite: { src: "/images/stickers/polite-cat.webp", width: 360, height: 464 },
   pop: { src: "/images/stickers/popcat.webp", width: 300, height: 384 },
-  surprised: { src: "/images/stickers/astonished-cat.webp", width: 158, height: 152 },
+  surprised: {
+    src: "/images/stickers/astonished-cat.webp",
+    width: 158,
+    height: 152,
+  },
 }
 
 const placements = {
@@ -33,7 +37,7 @@ export const CatSticker = ({ cat, placement }: CatStickerProps) => {
     <span
       className={cn(
         "pointer-events-none absolute z-3 block select-none",
-        placements[placement]
+        placements[placement],
       )}
       aria-hidden="true"
     >
@@ -48,10 +52,10 @@ export const CatSticker = ({ cat, placement }: CatStickerProps) => {
       />
       <span
         className={cn(
-          "absolute top-[5%] right-[-15%] text-[27px] leading-none text-accent after:absolute after:top-[27px] after:left-[15px] after:text-[12px] after:content-['✦']",
+          "absolute top-[5%] right-[-15%] text-[27px] leading-none text-accent after:absolute after:top-[27px] after:left-[15px] after:text-xs after:content-['✦']",
           placement === "work" && "top-[20%] right-auto left-[-13%]",
           placement === "contact" &&
-            "top-[10%] right-[-16%] text-[33px] leading-none"
+            "top-[10%] right-[-16%] text-[33px] leading-none",
         )}
       >
         ✦

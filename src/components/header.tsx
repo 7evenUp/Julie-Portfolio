@@ -18,7 +18,7 @@ export const Header = () => {
       </Link>
 
       <nav
-        className="flex items-center gap-11 text-[12px]"
+        className="flex items-center gap-11 text-xs"
         aria-label="Основная навигация"
       >
         <Link

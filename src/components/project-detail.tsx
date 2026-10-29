@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { ArrowUpRight } from "./icons"
 import { PosterCarousel } from "./poster-carousel"
+import { ProjectLink } from "./project-link"
 
 import { projects } from "@/content/projects"
 
@@ -53,6 +54,9 @@ export const ProjectDetail = ({
         <p className="mt-[17px] text-base leading-[1.7] text-[#a2ad97]">
           {project.summary}
         </p>
+        {project.url && (
+          <ProjectLink href={project.url} className="mt-[17px]" />
+        )}
       </div>
 
       <Image
@@ -85,16 +89,6 @@ export const ProjectDetail = ({
           >
             {project.description}
           </p>
-          {project.url && (
-            <a
-              className="mt-[25px] inline-flex items-center gap-6 border-b border-[#72796a] pb-[9px] text-[12px] transition-[color,border-color] duration-200 hover:border-accent hover:text-accent"
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Посмотреть проект <ArrowUpRight className="size-[17px]" />
-            </a>
-          )}
         </div>
         <div>
           <span className="font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#7e8c70] wide:text-[11px]">
@@ -105,7 +99,7 @@ export const ProjectDetail = ({
               <li
                 className={cn(
                   "leading-[2.2] text-[#bdc7b2]",
-                  hasCarousel ? "text-base" : "text-[12px]",
+                  hasCarousel ? "text-base" : "text-xs",
                 )}
                 key={service}
               >

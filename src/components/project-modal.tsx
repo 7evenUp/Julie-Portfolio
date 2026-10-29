@@ -3,9 +3,17 @@
 import { useEffect, useRef } from "react"
 import { useRouter, usePathname } from "next/navigation"
 
+import { ProjectLink } from "./project-link"
+
 import type { MouseEvent, ReactNode, SyntheticEvent } from "react"
 
-export const ProjectModal = ({ children }: { children: ReactNode }) => {
+export const ProjectModal = ({
+  children,
+  projectUrl,
+}: {
+  children: ReactNode
+  projectUrl?: string
+}) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const router = useRouter()
   const pathname = usePathname()
@@ -55,11 +63,9 @@ export const ProjectModal = ({ children }: { children: ReactNode }) => {
     >
       <div className="border border-[#38422e] bg-[#181c16]">
         <div className="sticky top-0 z-3 flex h-16 items-center justify-between border-b border-[#323b2b] bg-[#181c16f5] px-[35px] backdrop-blur-[16px]">
-          <span className="font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] text-[#8c987f] wide:text-[11px]">
-            В деталях
-          </span>
+          {projectUrl && <ProjectLink href={projectUrl} />}
           <button
-            className="flex items-center gap-5 py-2.5 pl-5 hover:text-accent"
+            className="ml-auto flex shrink-0 items-center gap-5 py-2.5 pl-5 hover:text-accent"
             type="button"
             onClick={handleClose}
             aria-label="Закрыть проект"
