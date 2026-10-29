@@ -17,7 +17,10 @@ export const Header = () => {
         {site.brand}
       </Link>
 
-      <nav className="flex items-center gap-11 text-[12px]" aria-label="Основная навигация">
+      <nav
+        className="flex items-center gap-11 text-[12px]"
+        aria-label="Основная навигация"
+      >
         <Link
           href="/#work"
           className="flex items-center gap-2 transition-colors duration-200 hover:text-accent"
@@ -26,12 +29,6 @@ export const Header = () => {
           <span className="self-start pt-0.5 font-mono text-[9px] leading-[normal] text-muted">
             {String(projects.length).padStart(2, "0")}
           </span>
-        </Link>
-        <Link
-          href="/#about"
-          className="flex items-center gap-2 transition-colors duration-200 hover:text-accent"
-        >
-          Обо мне
         </Link>
         <Link
           href="/#contact"

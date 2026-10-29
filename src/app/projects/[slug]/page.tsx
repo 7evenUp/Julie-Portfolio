@@ -7,6 +7,8 @@ import { ProjectDetail } from "@/components/project-detail"
 import { projects, getProject } from "@/content/projects"
 import { site, siteUrl } from "@/content/site"
 
+import { cn } from "@/lib/cn"
+
 export const generateStaticParams = () => projects.map(({ slug }) => ({ slug }))
 export { projectMetadata as generateMetadata } from "@/lib/project-metadata"
 
@@ -35,13 +37,25 @@ const ProjectPage = async ({
   }
 
   return (
-    <div className="relative isolate min-w-[1120px] overflow-clip bg-page">
+    <div
+      className={cn(
+        "relative isolate overflow-clip bg-page",
+        project.galleryLayout === "carousel"
+          ? "[--gutter:20px] sm:[--gutter:32px] lg:[--gutter:64px] max-sm:[&>header>a]:shrink-0 max-sm:[&>header>a]:text-[18px] max-sm:[&>header_nav>a:first-child]:hidden max-sm:[&>header_nav>a:last-child]:gap-2 max-sm:[&>header_nav>a:last-child]:px-3"
+          : "min-w-[1120px]",
+      )}
+    >
       <Header />
 
       <main id="main" className="mx-auto mt-[45px] max-w-[1100px] pb-[60px]">
         <Link
           href="/#work"
-          className="ml-11 inline-block font-mono text-[11px] leading-[1.65] font-normal tracking-[0.035em] text-accent"
+          className={cn(
+            "inline-block font-mono text-[11px] leading-[1.65] font-normal tracking-[0.035em] text-accent",
+            project.galleryLayout === "carousel"
+              ? "ml-5 sm:ml-8 lg:ml-11"
+              : "ml-11",
+          )}
         >
           ← Все проекты
         </Link>

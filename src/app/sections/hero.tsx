@@ -13,14 +13,6 @@ const Hero = () => {
       className="relative mx-auto flex h-[calc(100svh-84px)] min-h-[620px] w-[calc(100%-var(--gutter)*2)] max-w-[1632px] flex-col"
       aria-labelledby="hero-title"
     >
-      <div className="flex h-11 shrink-0 justify-between pt-[18px] font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] text-muted wide:text-[11px]">
-        <span>Независимый дизайнер</span>
-        <span className="flex items-center gap-2.5">
-          Сайты, графика и немного магии{" "}
-          <span className="text-lg leading-none text-accent">✳</span>
-        </span>
-      </div>
-
       <div className="relative z-2 grid shrink-0 grid-cols-[1fr_2fr] items-center pt-[clamp(24px,3svh,42px)] pb-4">
         <div className="relative ml-[35px] w-[clamp(180px,16vw,270px)] wide:ml-[42px]">
           <span className="absolute -top-[26px] -left-[18px] z-2 -rotate-10 font-handwriting text-[clamp(34px,3vw,48px)] leading-none font-medium whitespace-nowrap text-accent">
@@ -47,17 +39,13 @@ const Hero = () => {
         </div>
 
         <div className="relative pl-[29px] wide:pl-[45px]">
-          <div className="mb-4 flex items-center gap-[9px] font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] text-muted wide:text-[11px]">
-            <span className="block size-[5px] rounded-full bg-accent shadow-[0_0_12px_#d2fb7830]" />
-            Веб- и графический дизайн
-          </div>
           <h1
             id="hero-title"
             className="relative w-fit text-[clamp(56px,4.85vw,92px)] leading-[1.12] font-normal tracking-[-0.065em] whitespace-nowrap"
           >
             {site.headline[0]}
             <br />
-            <span className="text-accent">{site.headline[1]}</span>
+            {site.headline[1]}
             <span className="absolute -top-[0.13em] -right-[0.48em] inline-block text-[0.62em] text-accent">
               *
             </span>

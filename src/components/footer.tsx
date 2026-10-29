@@ -12,7 +12,7 @@ export const Footer = () => {
         {site.brand}
         <Asterisk className="size-3 text-accent" />
       </a>
-      <span>С вниманием к каждой детали © 2026</span>
+      <span>© 2026 Юлия</span>
       <a href="#main" className="flex items-center gap-3">
         Наверх <ArrowUpRight className="size-3" />
       </a>

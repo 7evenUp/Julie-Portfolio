@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
-import About from "./sections/about"
 import Hero from "./sections/hero"
 import Work from "./sections/work"
 
@@ -59,7 +58,6 @@ const Home = () => {
       <main id="main">
         <Hero />
         <Work />
-        <About />
         <Contact />
       </main>
 
