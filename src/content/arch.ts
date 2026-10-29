@@ -2,13 +2,12 @@ import { getProject, projects } from "./projects";
 
 /**
  * Eight slots in the first-screen carousel, in their travel order.
- * One real project and seven demo images fill the current eight slots.
  * Change these covers independently of the project grid.
  */
 export const arch = {
   durationSeconds: 16,
   items: [
-    { id: "orto", image: projects[0].cover.src },
+    { id: "tete-a-tete", image: "/images/projects/tete-a-tete/arch.webp" },
     { id: "forma", image: projects[1].cover.src },
     { id: "wedding", image: projects[2].cover.src },
     { id: "lumi", image: projects[3].cover.src },

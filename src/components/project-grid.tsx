@@ -20,6 +20,11 @@ const projectLayouts: Record<Project["layout"], string> = {
   last: "col-start-2 col-end-10 row-start-3 pt-[110px]",
 }
 
+const continuationLayouts = [
+  "col-start-1 col-end-6 row-auto pt-[110px] wide:pt-[140px]",
+  "col-start-8 col-end-13 row-auto pt-[270px] wide:pt-[330px]",
+]
+
 const ProjectCard = ({
   project,
   index,
@@ -35,7 +40,7 @@ const ProjectCard = ({
         "relative min-w-0 animate-card-enter",
         !isFiltered &&
           (index >= 5
-            ? "col-span-6 row-auto pt-[95px]"
+            ? continuationLayouts[(index - 5) % continuationLayouts.length]
             : projectLayouts[project.layout])
       )}
     >
