@@ -1,0 +1,72 @@
+import Image from "next/image"
+
+import { AmbientSculpture } from "@/components/ambient"
+import { CatSticker } from "@/components/cat-sticker"
+import { ProjectArch } from "@/components/project-arch"
+
+import { site } from "@/content/site"
+
+const Hero = () => {
+  return (
+    <section
+      className="relative mx-auto flex h-[calc(100svh-84px)] min-h-[620px] w-[calc(100%-var(--gutter)*2)] max-w-[1632px] flex-col"
+      aria-labelledby="hero-title"
+    >
+      <div className="flex h-11 shrink-0 justify-between pt-[18px] font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] text-muted wide:text-[11px]">
+        <span>Независимый дизайнер</span>
+        <span className="flex items-center gap-2.5">
+          Сайты, графика и немного магии{" "}
+          <span className="text-lg leading-none text-accent">✳</span>
+        </span>
+      </div>
+
+      <div className="relative z-2 grid shrink-0 grid-cols-[1fr_2fr] items-center pt-[clamp(24px,3svh,42px)] pb-4">
+        <div className="relative ml-[35px] w-[clamp(180px,16vw,270px)] wide:ml-[42px]">
+          <span className="absolute -top-[26px] -left-[18px] z-2 -rotate-10 font-handwriting text-[clamp(34px,3vw,48px)] leading-none font-medium whitespace-nowrap text-accent">
+            Привет, я Юля!
+          </span>
+          <div className="relative h-[clamp(200px,28svh,300px)] w-full -rotate-3 bg-[#242724] transition-transform duration-550 hover:rotate-0">
+            <Image
+              className="h-full w-full object-cover object-[50%_34%] opacity-91 grayscale"
+              src={site.portrait}
+              alt="Юля, веб- и графический дизайнер"
+              width={640}
+              height={800}
+              sizes="320px"
+              priority
+            />
+            <span className="absolute -top-[7px] -left-[7px] size-[19px] border-t border-l border-accent" />
+            <span className="absolute -right-[7px] -bottom-[7px] size-[19px] border-r border-b border-accent" />
+          </div>
+          <CatSticker cat="polite" placement="portrait" />
+        </div>
+
+        <div className="relative pl-[29px] wide:pl-[45px]">
+          <div className="mb-4 flex items-center gap-[9px] font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] text-muted wide:text-[11px]">
+            <span className="block size-[5px] rounded-full bg-accent shadow-[0_0_12px_#d2fb7830]" />
+            Веб- и графический дизайн
+          </div>
+          <h1
+            id="hero-title"
+            className="relative w-fit text-[clamp(56px,4.85vw,92px)] leading-[1.12] font-normal tracking-[-0.065em] whitespace-nowrap"
+          >
+            {site.headline[0]}
+            <br />
+            <span className="text-accent">{site.headline[1]}</span>
+            <span className="absolute -top-[0.13em] -right-[0.48em] inline-block text-[0.62em] text-accent">
+              *
+            </span>
+          </h1>
+          <p className="mt-[18px] max-w-[490px] text-base leading-[1.65] tracking-[-0.025em] text-[#b8bcb3] wide:max-w-[560px] wide:text-lg">
+            {site.introduction}
+          </p>
+          <AmbientSculpture className="absolute right-3 bottom-0 size-[76px] mr-0 wide:right-5 wide:size-[90px]" />
+        </div>
+      </div>
+
+      <ProjectArch />
+    </section>
+  )
+}
+
+export default Hero

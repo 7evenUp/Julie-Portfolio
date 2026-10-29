@@ -1,40 +1,19 @@
 import type { Metadata } from "next"
-import Image from "next/image"
-import { Header } from "@/components/header"
-import { AmbientSculpture } from "@/components/ambient"
-import { ProjectArch } from "@/components/project-arch"
-import { ProjectGrid } from "@/components/project-grid"
+
 import { Contact } from "@/components/contact"
-import { CatSticker } from "@/components/cat-sticker"
-import { ArrowUpRight, Asterisk, Globe } from "@/components/icons"
+import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
+import About from "./sections/about"
+import Hero from "./sections/hero"
+import Work from "./sections/work"
+
 import { site, siteUrl, description } from "@/content/site"
 
 export const metadata: Metadata = {
   ...(siteUrl ? { alternates: { canonical: "/" } } : {}),
 }
 
-const services = [
-  {
-    number: "01",
-    title: "Сайты",
-    text: "От первого впечатления до последнего клика.",
-    tags: "Лендинги / Многостраничные сайты",
-  },
-  {
-    number: "02",
-    title: "Графика",
-    text: "Визуальный характер, который замечают.",
-    tags: "Баннеры / Афиши / Соцсети",
-  },
-  {
-    number: "03",
-    title: "Особенные моменты",
-    text: "Бережный дизайн для ваших важных историй.",
-    tags: "Приглашения / Свадебная полиграфия",
-  },
-]
-
-export default function Home() {
+const Home = () => {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
@@ -62,139 +41,30 @@ export default function Home() {
   }
 
   return (
-    <div className="site-shell">
-      <div className="page-grid" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
+    <div className="relative isolate min-w-[1120px] overflow-clip bg-page">
+      <div
+        className="page-grid pointer-events-none absolute inset-y-0 inset-x-(--gutter) -z-1 mx-auto flex max-w-[1632px] justify-between"
+        aria-hidden="true"
+      >
+        {Array.from({ length: 5 }, (_, index) => (
+          <span
+            className="relative h-full w-px bg-line opacity-70"
+            key={index}
+          />
+        ))}
       </div>
+
       <Header />
+
       <main id="main">
-        <section className="hero page-width" aria-labelledby="hero-title">
-          <div className="hero-topline mono">
-            <span>Независимый дизайнер</span>
-            <span>
-              Сайты, графика и немного магии{" "}
-              <span className="small-star">✳</span>
-            </span>
-          </div>
-          <div className="hero-main">
-            <div className="portrait-column">
-              <span className="portrait-signature">Привет, я Юля!</span>
-              <div className="portrait-frame">
-                <Image
-                  src={site.portrait}
-                  alt="Юля, веб- и графический дизайнер"
-                  width={640}
-                  height={800}
-                  sizes="320px"
-                  priority
-                />
-                <span className="portrait-corner portrait-corner--tl" />
-                <span className="portrait-corner portrait-corner--br" />
-              </div>
-              <CatSticker cat="polite" placement="portrait" />
-            </div>
-            <div className="hero-copy">
-              <div className="hero-eyebrow mono">
-                <span className="live-dot" />
-                Веб- и графический дизайн
-              </div>
-              <h1 id="hero-title">
-                {site.headline[0]}
-                <br />
-                <span>{site.headline[1]}</span>
-                <span className="hero-title-dot">*</span>
-              </h1>
-              <p className="hero-description">{site.introduction}</p>
-              <AmbientSculpture />
-            </div>
-          </div>
-          <ProjectArch />
-        </section>
-        <section
-          className="work-section page-width"
-          id="work"
-          aria-labelledby="work-title"
-        >
-          <div className="section-topline mono">
-            <span>[ 01 — Избранные работы ]</span>
-            <span>Собраны с вниманием</span>
-          </div>
-          <div className="work-heading">
-            <CatSticker cat="surprised" placement="work" />
-            <h2 id="work-title">
-              Разные задачи.
-              <br />
-              <span>Один почерк.</span>
-            </h2>
-            <p>
-              У каждого проекта свой характер.
-              <br />
-              Нажмите на работу, чтобы узнать её историю.
-              <ArrowUpRight />
-            </p>
-          </div>
-          <ProjectGrid />
-          <div className="work-end mono">
-            <span>Авторские проекты и визуальные эксперименты.</span>
-            <span>
-              У каждой работы — своя история <Asterisk />
-            </span>
-          </div>
-        </section>
-        <section
-          className="about-section page-width"
-          id="about"
-          aria-labelledby="about-title"
-        >
-          <div className="section-topline mono">
-            <span>[ 02 — Дизайнер за кадром ]</span>
-            <span>Чуть ближе</span>
-          </div>
-          <div className="about-intro">
-            <div className="about-label">
-              <Asterisk />
-              <span className="mono">Это я, Юлия.</span>
-              <CatSticker cat="pop" placement="about" />
-            </div>
-            <div>
-              <h2 id="about-title">
-                Хороший дизайн начинается
-                <br />с <span>любопытства.</span>
-              </h2>
-              <p>{site.about}</p>
-            </div>
-          </div>
-          <div className="service-list">
-            {services.map((service) => (
-              <div className="service-row" key={service.number}>
-                <span className="mono service-number">/{service.number}</span>
-                <h3>{service.title}</h3>
-                <p>
-                  {service.text}
-                  <span className="mono">{service.tags}</span>
-                </p>
-                <ArrowUpRight />
-              </div>
-            ))}
-          </div>
-        </section>
+        <Hero />
+        <Work />
+        <About />
         <Contact />
       </main>
-      <footer className="footer page-width mono">
-        <a href="#" className="footer-brand">
-          {site.brand}
-          <Asterisk />
-        </a>
-        <span>С вниманием к каждой детали © 2026</span>
-        <a href="#main">
-          Наверх <ArrowUpRight />
-        </a>
-        <Globe />
-      </footer>
+
+      <Footer />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -204,3 +74,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
