@@ -119,15 +119,21 @@ export const ProjectDetail = ({
       ) : (
         <div className="grid gap-[25px]">
           {project.gallery.map((image) => (
-            <Image
-              className="w-full"
-              key={image.src}
-              src={image.src}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-              sizes="(min-width: 1300px) 1100px, 90vw"
-            />
+            <figure key={image.src}>
+              {image.title && (
+                <figcaption className="mb-[15px] font-mono text-xs leading-[1.65] text-[#a2ad97]">
+                  {image.title}
+                </figcaption>
+              )}
+              <Image
+                className="w-full"
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                sizes="(min-width: 1300px) 1100px, 90vw"
+              />
+            </figure>
           ))}
         </div>
       )}

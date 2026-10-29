@@ -1,4 +1,4 @@
-import { getProject, projects } from "./projects"
+import { getProject } from "./projects"
 
 /**
  * Eight slots in the first-screen carousel, in their travel order.
@@ -9,14 +9,20 @@ export const arch = {
   items: [
     { id: "tete-a-tete", image: "/images/projects/tete-a-tete/arch.webp" },
     { id: "forma", image: "/images/projects/forma/arch.webp" },
-    { id: "wedding", image: projects[2].cover.src },
-    { id: "lumi", image: projects[3].cover.src },
+    {
+      id: "wedding-stationery",
+      image: "/images/projects/wedding-stationery/arch.webp",
+    },
+    { id: "lumi", image: getProject("lumi-campaign")!.cover.src },
     {
       id: "midnight-session",
       image: getProject("midnight-session")!.cover.src,
     },
-    { id: "objects", image: projects[4].cover.src },
+    { id: "objects", image: getProject("objects-gallery")!.cover.src },
     { id: "poster-studies", image: getProject("poster-studies")!.cover.src },
-    { id: "invitations", image: projects[2].gallery[0].src },
+    {
+      id: "invitations",
+      image: "/images/projects/wedding-stationery/invitation-in-hand.webp",
+    },
   ],
 }
