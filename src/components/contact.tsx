@@ -1,3 +1,4 @@
+import { AnimatedSticker } from "./animated-sticker"
 import { ArrowUpRight, Asterisk } from "./icons"
 import { CatSticker } from "./cat-sticker"
 import { SectionTopline } from "./section-topline"
@@ -13,9 +14,10 @@ export const Contact = () => {
 
   return (
     <section
-      className="mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] border-t border-line pt-[65px] pb-[67px]"
+      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] border-t border-line pt-[65px] pb-[67px]"
       id="contact"
     >
+      <AnimatedSticker sticker="contact" className="bottom-1 left-[38%] w-[60px] rotate-12" />
       <SectionTopline title="[ 03 — Контакты ]">
         Всё начинается с разговора
       </SectionTopline>

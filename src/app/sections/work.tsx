@@ -1,3 +1,4 @@
+import { AnimatedSticker } from "@/components/animated-sticker"
 import { CatSticker } from "@/components/cat-sticker"
 import { ArrowUpRight, Asterisk } from "@/components/icons"
 import { ProjectGrid } from "@/components/project-grid"
@@ -6,10 +7,11 @@ import { SectionTopline } from "@/components/section-topline"
 const Work = () => {
   return (
     <section
-      className="mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] scroll-mt-[25px] pt-[94px] pb-10"
+      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] scroll-mt-[25px] pt-[94px] pb-10"
       id="work"
       aria-labelledby="work-title"
     >
+      <AnimatedSticker sticker="work" className="top-2 right-[20%] w-[76px] -rotate-12" />
       <SectionTopline title="[ 01 — Избранные работы ]">
         Собраны с вниманием
       </SectionTopline>

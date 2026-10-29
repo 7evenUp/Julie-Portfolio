@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import { AmbientSculpture } from "@/components/ambient"
+import { AnimatedSticker } from "@/components/animated-sticker"
 import { CatSticker } from "@/components/cat-sticker"
 import { ProjectArch } from "@/components/project-arch"
 
@@ -39,6 +40,10 @@ const Hero = () => {
             <span className="absolute -right-[7px] -bottom-[7px] size-[19px] border-r border-b border-accent" />
           </div>
           <CatSticker cat="polite" placement="portrait" />
+          <AnimatedSticker
+            sticker="hello"
+            className="-top-2 -right-[85px] w-[72px] rotate-12 wide:-right-[105px] wide:w-[88px]"
+          />
         </div>
 
         <div className="relative pl-[29px] wide:pl-[45px]">

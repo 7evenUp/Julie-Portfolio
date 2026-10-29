@@ -1,3 +1,4 @@
+import { AnimatedSticker } from "@/components/animated-sticker"
 import { CatSticker } from "@/components/cat-sticker"
 import { ArrowUpRight, Asterisk } from "@/components/icons"
 import { SectionTopline } from "@/components/section-topline"
@@ -28,10 +29,12 @@ const services = [
 const About = () => {
   return (
     <section
-      className="mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-[126px] pb-[100px]"
+      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-[126px] pb-[100px]"
       id="about"
       aria-labelledby="about-title"
     >
+      <AnimatedSticker sticker="about" className="top-5 right-[24%] w-[88px] rotate-9" />
+      <AnimatedSticker sticker="services" className="bottom-2 left-[40%] w-[84px] -rotate-9" />
       <SectionTopline title="[ 02 — Дизайнер за кадром ]">
         Чуть ближе
       </SectionTopline>
