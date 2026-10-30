@@ -16,7 +16,7 @@ export const arch = {
     { id: "lumi", image: getProject("lumi-campaign")!.cover.src },
     {
       id: "midnight-session",
-      image: getProject("midnight-session")!.cover.src,
+      image: "/images/projects/midnight-session/arch.webp",
     },
     { id: "objects", image: getProject("objects-gallery")!.cover.src },
     { id: "poster-studies", image: getProject("poster-studies")!.cover.src },
