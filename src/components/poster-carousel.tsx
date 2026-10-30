@@ -21,12 +21,31 @@ type DragSession = {
   axis: "pending" | "horizontal" | "vertical"
 }
 
+const carouselLabels = {
+  posters: {
+    heading: "Серия постеров",
+    previous: "Предыдущий постер",
+    next: "Следующий постер",
+    stage: "Постеры. Используйте стрелки влево и вправо для переключения",
+    item: "Постер",
+  },
+  banners: {
+    heading: "Серия баннеров",
+    previous: "Предыдущий баннер",
+    next: "Следующий баннер",
+    stage: "Баннеры. Используйте стрелки влево и вправо для переключения",
+    item: "Баннер",
+  },
+}
+
 export const PosterCarousel = ({
   images,
   inModal = false,
+  kind = "posters",
 }: {
   images: Project["gallery"]
   inModal?: boolean
+  kind?: keyof typeof carouselLabels
 }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [dragOffset, setDragOffset] = useState(0)
@@ -39,6 +58,11 @@ export const PosterCarousel = ({
   const lastIndex = images.length - 1
   const position = Math.max(0, Math.min(lastIndex, activeIndex - dragOffset))
   const activeImage = images[activeIndex]
+  const labels = carouselLabels[kind]
+  const aspectRatio = Math.max(
+    0,
+    ...images.map((image) => image.width / image.height),
+  )
 
   const selectImage = (index: number) => {
     setActiveIndex(Math.max(0, Math.min(lastIndex, index)))
@@ -50,7 +74,7 @@ export const PosterCarousel = ({
 
     const stage = event.currentTarget
     const width = stage.clientWidth
-    const largeWidth = Math.min(width * 0.7, stage.clientHeight * 0.7065)
+    const largeWidth = Math.min(width * 0.7, stage.clientHeight * aspectRatio)
     const smallWidth = Math.min(
       width * 0.11,
       112,
@@ -145,12 +169,12 @@ export const PosterCarousel = ({
           id={headingId}
           className="text-2xl font-medium tracking-[-0.04em] sm:text-[32px]"
         >
-          Серия постеров
+          {labels.heading}
         </Heading>
         <div className="flex shrink-0 gap-2">
           <button
             type="button"
-            aria-label="Предыдущий постер"
+            aria-label={labels.previous}
             aria-controls={stageId}
             disabled={activeIndex === 0}
             className={styles.control}
@@ -160,7 +184,7 @@ export const PosterCarousel = ({
           </button>
           <button
             type="button"
-            aria-label="Следующий постер"
+            aria-label={labels.next}
             aria-controls={stageId}
             disabled={activeIndex === lastIndex}
             className={styles.control}
@@ -171,13 +195,16 @@ export const PosterCarousel = ({
         </div>
       </div>
 
-      <div className={styles.container}>
+      <div
+        className={styles.container}
+        style={{ "--image-aspect-ratio": aspectRatio } as CSSProperties}
+      >
         <div
           id={stageId}
           className={cn(styles.stage, isDragging && styles.dragging)}
           tabIndex={0}
           role="group"
-          aria-label="Постеры. Используйте стрелки влево и вправо для переключения"
+          aria-label={labels.stage}
           style={
             {
               "--start-weight": Math.max(0, 1 - position),
@@ -226,7 +253,7 @@ export const PosterCarousel = ({
                   alt={image.alt}
                   width={image.width}
                   height={image.height}
-                  sizes="(max-width: 640px) 70vw, 450px"
+                  sizes="(max-width: 640px) 70vw, 640px"
                   draggable={false}
                 />
               </button>
@@ -242,7 +269,7 @@ export const PosterCarousel = ({
       >
         <p className="min-w-0">{activeImage.title ?? activeImage.alt}</p>
         <span className="shrink-0 text-muted tabular-nums">
-          <span className="sr-only">Постер </span>
+          <span className="sr-only">{labels.item} </span>
           {activeIndex + 1} из {images.length}
         </span>
       </div>

@@ -115,6 +115,7 @@ export const ProjectDetail = ({
           key={project.slug}
           images={project.gallery}
           inModal={inModal}
+          kind={project.category === "Баннеры" ? "banners" : "posters"}
         />
       ) : (
         <div className="grid gap-[25px]">

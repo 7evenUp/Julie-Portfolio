@@ -13,7 +13,10 @@ export const arch = {
       id: "wedding-stationery",
       image: "/images/projects/wedding-stationery/arch.webp",
     },
-    { id: "lumi", image: getProject("lumi-campaign")!.cover.src },
+    {
+      id: "vibe-coding-banners",
+      image: "/images/projects/vibe-coding-banners/arch.webp",
+    },
     {
       id: "midnight-session",
       image: "/images/projects/midnight-session/arch.webp",

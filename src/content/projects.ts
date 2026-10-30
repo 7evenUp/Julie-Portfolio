@@ -420,6 +420,70 @@ export const projects: Project[] = [
     layout: "medium",
     background: "#faf3ed",
   },
+  {
+    slug: "vibe-coding-banners",
+    title: "Вайб-кодинг — баннеры",
+    category: "Баннеры",
+    year: "2026",
+    summary: "Продвижение онлайн-школы вайб-кодинга во ВКонтакте и Telegram.",
+    description:
+      "Баннеры для продвижения онлайн-школы вайб-кодинга во ВКонтакте и Telegram. Задача — заинтересовать новичков и пригласить их на бесплатный урок. Крупные заголовки и заметные призывы к действию помогают быстро донести идею: начать создавать с AI можно без опыта программирования.",
+    services: ["Дизайн баннеров", "Дизайн для соцсетей", "Типографика"],
+    cover: {
+      src: "/images/projects/vibe-coding-banners/cover.webp",
+      alt: "Коллаж шести баннеров онлайн-школы вайб-кодинга с яркими заголовками, роботизированными руками и приглашениями на бесплатный урок",
+      width: 1254,
+      height: 1254,
+    },
+    gallery: [
+      {
+        src: "/images/projects/vibe-coding-banners/try-vibe-coding.webp",
+        title: "Попробуйте вайб-кодинг",
+        alt: "Баннер «Попробуйте вайб-кодинг»: белая роботизированная рука с чипом, зелёная сетка и кнопка «Перейти к уроку»",
+        width: 1080,
+        height: 1080,
+      },
+      {
+        src: "/images/projects/vibe-coding-banners/code-without-code.webp",
+        title: "Код без кода",
+        alt: "Баннер «Код без кода» с белой и зелёной типографикой, хромированными фигурами и предложением начать обучение бесплатно",
+        width: 1080,
+        height: 1080,
+      },
+      {
+        src: "/images/projects/vibe-coding-banners/first-ai-project.webp",
+        title: "Первый проект через AI",
+        alt: "Баннер «Сделайте свой первый проект через AI за 7 дней»: оранжевая лента на чёрном фоне и приглашение на бесплатный урок",
+        width: 1080,
+        height: 1080,
+      },
+      {
+        src: "/images/projects/vibe-coding-banners/learn-ai-coding.webp",
+        title: "Научим писать код через AI",
+        alt: "Фиолетовый баннер «Научим писать код через AI» с руками человека и робота, без опыта и сложной теории",
+        width: 1080,
+        height: 1080,
+      },
+      {
+        src: "/images/projects/vibe-coding-banners/create-with-ai.webp",
+        title: "Создавайте с помощью AI",
+        alt: "Баннер «Создавайте с помощью AI» с ветвящейся схемой: боты, автоматизации, сайты и приложения",
+        width: 1080,
+        height: 1080,
+      },
+      {
+        src: "/images/projects/vibe-coding-banners/start-in-it.webp",
+        title: "Хотите в IT?",
+        alt: "Баннер «Хотите в IT, но не умеете программировать?» с жёлто-оранжевой пушистой формой и призывом «Начните бесплатно»",
+        width: 1080,
+        height: 1080,
+      },
+    ],
+    galleryLayout: "carousel",
+    isDemo: false,
+    layout: "medium",
+    background: "#141414",
+  },
 ]
 
 export function getProject(slug: string) {

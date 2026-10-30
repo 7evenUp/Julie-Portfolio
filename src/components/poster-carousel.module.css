@@ -3,8 +3,8 @@
 }
 
 .stage {
-  --poster-height: min(72svh, 640px, 99cqw);
-  --large-width: min(70%, calc(var(--poster-height) * 0.7065));
+  --image-height: min(72svh, 640px, calc(70cqw / var(--image-aspect-ratio)));
+  --large-width: calc(var(--image-height) * var(--image-aspect-ratio));
   --small-width: min(11%, 112px, calc((100% - var(--large-width) - 32px) / 2));
   --slide-step: calc(var(--small-width) + 16px);
   --focus-x: calc(
@@ -12,7 +12,7 @@
       (50% - var(--large-width) / 2) * var(--end-weight)
   );
   position: relative;
-  height: var(--poster-height);
+  height: var(--image-height);
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
   cursor: grab;
@@ -52,9 +52,10 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: auto;
+  width: var(--large-width);
   max-width: none;
   height: 100%;
+  object-fit: contain;
   transform: translateX(-50%);
   pointer-events: none;
 }
