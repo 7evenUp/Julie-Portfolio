@@ -42,16 +42,9 @@ const Home = () => {
   return (
     <div className="relative isolate min-w-[1120px] overflow-clip bg-page">
       <div
-        className="page-grid pointer-events-none absolute inset-y-0 inset-x-(--gutter) -z-1 mx-auto flex max-w-[1632px] justify-between"
+        className="page-grid pointer-events-none absolute inset-0 -z-1"
         aria-hidden="true"
-      >
-        {Array.from({ length: 5 }, (_, index) => (
-          <span
-            className="relative h-full w-px bg-line opacity-70"
-            key={index}
-          />
-        ))}
-      </div>
+      />
 
       <Header />
 

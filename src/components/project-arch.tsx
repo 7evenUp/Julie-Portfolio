@@ -15,13 +15,13 @@ export const ProjectArch = () => {
   return (
     <section
       id="project-arch"
-      className="relative left-1/2 isolate min-h-[260px] w-screen max-w-[1920px] flex-1 -translate-x-1/2 overflow-clip [--arch-radius:clamp(320px,28.5vw,530px)] [--card-size:clamp(132px,11.3vw,204px)]"
+      className="relative left-1/2 isolate min-h-0 w-screen max-w-[1920px] flex-1 -translate-x-1/2 overflow-clip [container-type:size] [--arch-radius:min(clamp(320px,28.5vw,530px),80cqh)] [--card-size:min(clamp(132px,11.3vw,204px),32cqh)]"
       aria-label="Анимированная арка из восьми карточек проектов"
       style={{ "--arch-duration": `${arch.durationSeconds}s` } as CSSProperties}
     >
       <div className="absolute inset-0 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-2 after:h-12 after:bg-[linear-gradient(transparent,var(--color-page))]">
         <div
-          className="absolute top-[calc(var(--arch-radius)+var(--card-size)/2+12px)] left-1/2 size-0 animate-arch-travel [transform:rotate(-90deg)] will-change-transform"
+          className="absolute bottom-0 left-1/2 size-0 animate-arch-travel [transform:rotate(-90deg)] will-change-transform"
           aria-hidden="true"
         >
           {wheelItems.map((item, index) => (

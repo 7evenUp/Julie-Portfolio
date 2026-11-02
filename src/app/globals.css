@@ -22,27 +22,17 @@
   --animate-arch-travel: arch-travel var(--arch-duration) linear infinite;
 }
 
-/* Шаг горизонтальных линий и SVG-крестиков совпадает с колонками сетки. */
+/* Сетка продолжается за пределы контента, сохраняя шаг и центральную ось. */
 .page-grid {
-  --grid-step: min(408px, calc((100vw - var(--gutter) * 2) / 4));
-  background: linear-gradient(
-      to bottom,
-      rgba(218, 226, 208, 0.055) 1px,
-      transparent 1px
-    )
-    0 0 / 100% var(--grid-step);
-}
-
-.page-grid > span::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  bottom: 0;
-  left: -4px;
-  width: 9px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='328' viewBox='0 0 9 328'%3E%3Cpath d='M4.5 0v9M0 4.5h9' stroke='%23606a55' stroke-width='1'/%3E%3C/svg%3E")
-    0 0 / 9px var(--grid-step) repeat-y;
-  opacity: 0.75;
+  --grid-step: min(408px, calc((max(100vw, 1120px) - var(--gutter) * 2) / 4));
+  --grid-origin: calc(50% + var(--grid-step) / 2);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpath d='M4.5 0v9M0 4.5h9' stroke='%23606a55' stroke-width='1' opacity='.525'/%3E%3C/svg%3E")
+      calc(var(--grid-origin) - 4px) -4px / var(--grid-step) var(--grid-step),
+    linear-gradient(to right, rgba(218, 226, 208, 0.077) 1px, transparent 1px)
+      var(--grid-origin) 0 / var(--grid-step) 100%,
+    linear-gradient(to bottom, rgba(218, 226, 208, 0.055) 1px, transparent 1px)
+      0 0 / 100% var(--grid-step);
 }
 
 /* Порядок 3D-преобразований важен для реакции скульптуры на указатель. */
