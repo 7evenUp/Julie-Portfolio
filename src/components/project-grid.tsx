@@ -1,14 +1,11 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 
 import { ArrowUpRight } from "./icons"
 
-import { categories, projects } from "@/content/projects"
+import { projects } from "@/content/projects"
 
-import type { Category, Project } from "@/content/projects"
+import type { Project } from "@/content/projects"
 
 import { cn } from "@/lib/cn"
 
@@ -25,18 +22,12 @@ const projectLayouts: Record<string, string> = {
     "col-start-7 col-end-13 row-start-4 pt-[110px] wide:pt-[140px]",
 }
 
-const ProjectCard = ({
-  project,
-  isFiltered,
-}: {
-  project: Project
-  isFiltered: boolean
-}) => {
+const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <article
       className={cn(
         "relative min-w-0 animate-card-enter",
-        !isFiltered && projectLayouts[project.slug],
+        projectLayouts[project.slug],
       )}
     >
       <Link
@@ -92,66 +83,11 @@ const ProjectCard = ({
 }
 
 export const ProjectGrid = () => {
-  const [selectedCategory, setSelectedCategory] =
-    useState<Category>("Все работы")
-  const isFiltered = selectedCategory !== "Все работы"
-  const visibleProjects = projects.filter(
-    (project) => !isFiltered || project.category === selectedCategory,
-  )
-
   return (
-    <>
-      <div className="mt-[42px] flex items-center justify-between gap-5 border-b border-line pb-6">
-        <div
-          className="flex items-center gap-2"
-          role="group"
-          aria-label="Категории проектов"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              onClick={() => setSelectedCategory(category)}
-              className={cn(
-                "rounded-[30px] border border-transparent px-3.5 py-2.5 text-[10px] whitespace-nowrap text-[#aeb3a7] transition-[background,color,border-color] duration-250 hover:border-[#59604e] hover:text-accent wide:px-[18px] wide:py-[11px] wide:text-xs",
-                selectedCategory === category &&
-                  "bg-ink text-page hover:text-page",
-              )}
-              aria-pressed={selectedCategory === category}
-            >
-              {category}
-              {category === "Все работы" && (
-                <sup className="static ml-1.5 align-super font-mono text-[8px] leading-[normal]">
-                  {String(projects.length).padStart(2, "0")}
-                </sup>
-              )}
-            </button>
-          ))}
-        </div>
-        <span className="flex items-center gap-[7px] font-mono text-[8px] leading-[1.65] font-normal tracking-[0.035em] whitespace-nowrap text-[#959b8c] wide:text-[9px]">
-          <span className="size-1 rounded-full bg-accent" />
-          Авторские проекты
-        </span>
-      </div>
-
-      <p className="sr-only" role="status">
-        Показано проектов: {visibleProjects.length}
-      </p>
-
-      <div
-        className={cn(
-          "grid grid-cols-12 gap-x-6 pt-[42px] pb-[90px] wide:pb-[115px]",
-          isFiltered && "min-h-[550px] grid-cols-2 items-start gap-10",
-        )}
-      >
-        {visibleProjects.map((project) => (
-          <ProjectCard
-            project={project}
-            isFiltered={isFiltered}
-            key={project.slug}
-          />
-        ))}
-      </div>
-    </>
+    <div className="grid grid-cols-12 gap-x-6 pt-30 pb-[90px] wide:pb-[115px]">
+      {projects.map((project) => (
+        <ProjectCard project={project} key={project.slug} />
+      ))}
+    </div>
   )
 }

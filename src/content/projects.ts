@@ -1,5 +1,4 @@
 export const categories = [
-  "Все работы",
   "Сайты",
   "Баннеры",
   "Афиши",
@@ -10,7 +9,7 @@ export type Category = (typeof categories)[number]
 export type Project = {
   slug: string
   title: string
-  category: Exclude<Category, "Все работы">
+  category: Category
   summary: string
   description: string
   services: string[]

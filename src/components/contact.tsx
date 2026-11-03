@@ -16,33 +16,33 @@ export const Contact = () => {
 
   return (
     <section
-      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] border-t border-line pt-[65px] pb-[67px]"
+      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-[65px] pb-[67px]"
       id="contact"
       aria-labelledby="contact-title"
     >
-      <AnimatedSticker
-        sticker="contact"
-        className="bottom-1 left-[38%] w-[60px] rotate-12"
-      />
-
       <div className="relative mt-[45px] flex items-center justify-between">
-        <h2
-          id="contact-title"
-          className="text-[clamp(54px,5.2vw,85px)] leading-[1.14] font-normal tracking-[-0.06em]"
-        >
-          Обсудить проект
-        </h2>
+        <div className="relative">
+          <h2
+            id="contact-title"
+            className="text-[clamp(54px,5.2vw,85px)] leading-[1.14] font-normal tracking-[-0.06em]"
+          >
+            Обсудить проект
+          </h2>
+          <AnimatedSticker
+            sticker="contact"
+            className="absolute right-0 translate-x-full top-1/2 -translate-y-1/2 w-20 rotate-12"
+          />
+        </div>
         <CatSticker cat="polite" placement="contact" />
         <Asterisk className="mr-[47px] size-[98px] -rotate-15 text-accent" />
       </div>
 
       <div className="mt-[50px] flex items-start justify-between">
         <p className="text-[13px] leading-[1.9] text-[#a5ad9b] wide:text-[15px]">
-          Напишите, что нужно сделать,
-          <br />
-          укажите сроки и бюджет.
+          Напиши, что нужно сделать,
+          <br />и мы это сделаем.
         </p>
-        <div className="flex items-start gap-11 pt-[5px]">
+        <div className="flex items-start gap-11">
           {contacts.map((contact) =>
             contact.href ? (
               <a
