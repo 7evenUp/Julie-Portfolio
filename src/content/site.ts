@@ -4,11 +4,26 @@ export const site = {
   brand: "julia.design",
   role: "Веб- и графический дизайнер",
   introduction:
-    "Разрабатываю лендинги и многостраничные сайты, оформляю баннеры, афиши и свадебную полиграфию.",
+    "Помогаю идеям обрести форму — в сайтах, афишах, баннерах и приглашениях. Люблю выразительную типографику и продуманные детали.",
   portrait: "/images/julie.jpg",
   email: "",
   telegram: "",
   behance: "",
+}
+
+export const heroTypewriter = {
+  words: [
+    "сайтов",
+    "баннеров",
+    "афиш",
+    "свадебного визуала",
+    "инфографики для маркетплейсов",
+  ],
+  typingMs: 40,
+  deletingMs: 30,
+  holdMs: 1000,
+  emptyMs: 150,
+  initialHoldMs: 1000,
 }
 
 const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(

@@ -1,11 +1,12 @@
 import Image from "next/image"
 
+import HeroHeading from "./hero-heading"
+
 import { AmbientSculpture } from "@/components/ambient"
 import { AnimatedSticker } from "@/components/animated-sticker"
-import { CatSticker } from "@/components/cat-sticker"
 import { ProjectArch } from "@/components/project-arch"
 
-import { site } from "@/content/site"
+import { heroTypewriter, site } from "@/content/site"
 
 const Hero = () => {
   return (
@@ -38,23 +39,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-intro relative pl-[29px] wide:pl-[45px]">
-          <h1
-            id="hero-title"
-            className="relative w-fit text-[clamp(56px,4.85vw,92px)] leading-[1.12] font-normal tracking-[-0.065em] whitespace-nowrap"
-          >
-            <span className="relative mr-2 group bg-accent text-black font-bold">
-              Дизайн{" "}
-              <span className="absolute -left-2 -top-2 size-4 border-t border-l border-accent group-hover:scale-[115%] transition-transform" />
-              <span className="absolute -left-2 -bottom-2 size-4 border-b border-l border-accent group-hover:scale-[115%] transition-transform" />
-              <span className="absolute -right-2 -top-2 size-4 border-t border-r border-accent group-hover:scale-[115%] transition-transform" />
-              <span className="absolute -right-2 -bottom-2 size-4 border-b border-r border-accent group-hover:scale-[115%] transition-transform" />
-            </span>{" "}
-            сайтов
-            <br />и графики
-            <span className="absolute -top-[0.13em] -right-[0.48em] inline-block text-[0.62em] text-accent">
-              *
-            </span>
-          </h1>
+          <HeroHeading {...heroTypewriter} />
           <p className="mt-[18px] max-w-[490px] text-base leading-[1.65] tracking-[-0.025em] text-[#b8bcb3] wide:max-w-[560px] wide:text-lg">
             {site.introduction}
           </p>

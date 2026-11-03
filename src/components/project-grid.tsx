@@ -51,16 +51,16 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </span>
         </div>
 
-        <div className="mt-[15px] flex justify-between gap-2.5">
-          <div>
-            <h3 className="text-[14px] font-medium tracking-[-0.25px] wide:text-[17px]">
+        <div className="mt-[15px] flex justify-between gap-4">
+          <div className="min-w-0 flex-1">
+            <h3 className="text-lg leading-[1.4] font-medium tracking-[-0.25px] wide:text-xl">
               {project.title}
             </h3>
-            <p className="mt-[5px] text-[10px] leading-[1.6] text-muted wide:text-xs">
+            <p className="mt-2 text-sm leading-[1.6] text-muted wide:text-base">
               {project.summary}
             </p>
           </div>
-          <span className="shrink-0 text-right text-[9px] leading-[1.65] font-normal text-muted">
+          <span className="max-w-[35%] shrink-0 text-right text-[13px] leading-[1.65] font-normal text-muted wide:text-sm">
             {project.category}
           </span>
         </div>
