@@ -11,10 +11,10 @@ const Work = () => {
     >
       <AnimatedSticker
         sticker="work"
-        className="top-2 right-[20%] w-[76px] -rotate-12"
+        className="top-2 right-[23%] w-20 -rotate-12"
       />
 
-      <div className="relative mt-[37px] flex items-end justify-between">
+      <div className="relative mt-10 flex items-end justify-between">
         <CatSticker cat="surprised" placement="work" />
         <h2
           id="work-title"

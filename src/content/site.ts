@@ -3,7 +3,6 @@ export const site = {
   name: "Юля",
   brand: "julia.design",
   role: "Веб- и графический дизайнер",
-  headline: ["Дизайн сайтов", "и графики"],
   introduction:
     "Разрабатываю лендинги и многостраничные сайты, оформляю баннеры, афиши и свадебную полиграфию.",
   portrait: "/images/julie.jpg",

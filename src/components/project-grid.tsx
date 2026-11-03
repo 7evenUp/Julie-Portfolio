@@ -11,15 +11,13 @@ import { cn } from "@/lib/cn"
 
 // Позиции закреплены за работами: размер и отступ не зависят от их типа.
 const projectLayouts: Record<string, string> = {
-  "wedding-stationery": "col-start-1 col-end-8 row-start-1",
+  "tete-a-tete": "col-start-2 col-end-8 row-start-1",
   "midnight-session":
-    "col-start-10 col-end-13 row-start-1 pt-[140px] wide:pt-[190px]",
-  "tete-a-tete": "col-start-2 col-end-7 row-start-2 pt-[90px]",
-  "poster-studies":
-    "col-start-8 col-end-13 row-start-2 pt-[210px] wide:pt-[240px]",
-  forma: "col-start-2 col-end-10 row-start-3 pt-[110px]",
-  "vibe-coding-banners":
-    "col-start-7 col-end-13 row-start-4 pt-[110px] wide:pt-[140px]",
+    "col-start-9 col-end-13 row-start-1 pt-[140px] wide:pt-[190px]",
+  "wedding-stationery": "col-start-3 col-end-7 row-start-2 pt-[90px]",
+  "poster-studies": "col-start-8 col-end-11 row-start-2 pt-40",
+  "vibe-coding-banners": "col-start-1 col-end-6 row-start-3 pt-20",
+  forma: "col-start-7 col-end-13 row-start-3 pt-40",
 }
 
 const ProjectCard = ({ project }: { project: Project }) => {

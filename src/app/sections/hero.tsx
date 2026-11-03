@@ -18,7 +18,7 @@ const Hero = () => {
           <span className="absolute -top-[26px] -left-[18px] z-2 -rotate-10 font-handwriting text-[clamp(34px,3vw,48px)] leading-none font-medium whitespace-nowrap text-accent">
             Привет, я Юля!
           </span>
-          <div className="relative h-[clamp(200px,28svh,300px)] w-full -rotate-3 bg-[#242724] transition-transform duration-550 hover:rotate-0">
+          <div className="relative h-87.5 w-full -rotate-3 bg-[#242724] transition-transform duration-550 hover:rotate-0">
             <Image
               className="h-full w-full object-cover object-[50%_34%] opacity-91 grayscale"
               src={site.portrait}
@@ -31,7 +31,6 @@ const Hero = () => {
             <span className="absolute -top-[7px] -left-[7px] size-[19px] border-t border-l border-accent" />
             <span className="absolute -right-[7px] -bottom-[7px] size-[19px] border-r border-b border-accent" />
           </div>
-          <CatSticker cat="polite" placement="portrait" />
           <AnimatedSticker
             sticker="hello"
             className="-top-2 -right-[85px] w-[72px] rotate-12 wide:-right-[105px] wide:w-[88px]"
@@ -43,9 +42,15 @@ const Hero = () => {
             id="hero-title"
             className="relative w-fit text-[clamp(56px,4.85vw,92px)] leading-[1.12] font-normal tracking-[-0.065em] whitespace-nowrap"
           >
-            {site.headline[0]}
-            <br />
-            {site.headline[1]}
+            <span className="relative mr-2 group bg-accent text-black font-bold">
+              Дизайн{" "}
+              <span className="absolute -left-2 -top-2 size-4 border-t border-l border-accent group-hover:scale-[115%] transition-transform" />
+              <span className="absolute -left-2 -bottom-2 size-4 border-b border-l border-accent group-hover:scale-[115%] transition-transform" />
+              <span className="absolute -right-2 -top-2 size-4 border-t border-r border-accent group-hover:scale-[115%] transition-transform" />
+              <span className="absolute -right-2 -bottom-2 size-4 border-b border-r border-accent group-hover:scale-[115%] transition-transform" />
+            </span>{" "}
+            сайтов
+            <br />и графики
             <span className="absolute -top-[0.13em] -right-[0.48em] inline-block text-[0.62em] text-accent">
               *
             </span>

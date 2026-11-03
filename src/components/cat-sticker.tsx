@@ -15,9 +15,7 @@ const cats = {
 }
 
 const placements = {
-  portrait:
-    "right-[-60px] -bottom-4 w-[clamp(90px,7.5vw,128px)] rotate-12 wide:right-[-70px]",
-  work: "left-[52%] -bottom-2 w-[clamp(100px,8.2vw,140px)] -rotate-12",
+  work: "left-1/4 -bottom-10 w-[clamp(100px,8.2vw,140px)]",
   about:
     "top-[70px] left-[132px] w-[clamp(100px,8.5vw,145px)] rotate-9 text-muted wide:left-[150px]",
   contact:
