@@ -75,9 +75,8 @@ const ProjectCard = ({
               {project.summary}
             </p>
           </div>
-          <span className="flex items-start gap-[13px] font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-muted">
-            {project.year}
-            <ArrowUpRight className="mt-0.5 size-[13px] text-ink" />
+          <span className="shrink-0 text-right text-[9px] leading-[1.65] font-normal text-muted">
+            {project.category}
           </span>
         </div>
       </Link>

@@ -33,9 +33,7 @@ export const ProjectDetail = ({
     >
       <div>
         <div className="flex justify-between font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#a9b09f] wide:text-[11px]">
-          <span>
-            {project.category} / {project.year}
-          </span>
+          <span>{project.category}</span>
         </div>
         <Heading
           id="project-title"
