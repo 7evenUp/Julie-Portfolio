@@ -22,16 +22,12 @@ const projectLayouts: Record<string, string> = {
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <article
-      className={cn(
-        "relative min-w-0 animate-card-enter",
-        projectLayouts[project.slug],
-      )}
-    >
+    <article className={cn("relative min-w-0", projectLayouts[project.slug])}>
       <Link
         href={`/projects/${project.slug}`}
         scroll={false}
-        className="group"
+        className="group block"
+        data-reveal="project"
         aria-label={`${project.title} — подробнее о проекте`}
       >
         <div

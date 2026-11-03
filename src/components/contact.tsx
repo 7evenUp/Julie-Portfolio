@@ -20,7 +20,7 @@ export const Contact = () => {
       id="contact"
       aria-labelledby="contact-title"
     >
-      <div className="relative mt-[45px] flex items-center justify-between">
+      <div className="relative mt-[45px] flex items-center justify-between" data-reveal="contact">
         <div className="relative">
           <h2
             id="contact-title"
@@ -38,16 +38,18 @@ export const Contact = () => {
       </div>
 
       <div className="mt-[50px] flex items-start justify-between">
-        <p className="text-[13px] leading-[1.9] text-[#a5ad9b] wide:text-[15px]">
+        <p className="text-[13px] leading-[1.9] text-[#a5ad9b] wide:text-[15px]" data-reveal="contact" data-reveal-step="1">
           Напиши, что нужно сделать,
           <br />и мы это сделаем.
         </p>
         <div className="flex items-start gap-11">
-          {contacts.map((contact) =>
+          {contacts.map((contact, index) =>
             contact.href ? (
               <a
                 className="flex items-center gap-4 border-b border-[#8d987d] pb-2.5 text-xs transition-colors duration-250 hover:text-accent"
                 key={contact.label}
+                data-reveal="contact"
+                data-reveal-step={index + 1}
                 href={contact.href}
                 target={
                   contact.href.startsWith("mailto:") ? undefined : "_blank"
@@ -61,6 +63,8 @@ export const Contact = () => {
               <div
                 className="min-w-[110px] border-b border-[#3b4333] pb-2.5 text-xs text-[#a3ad96]"
                 key={contact.label}
+                data-reveal="contact"
+                data-reveal-step={index + 1}
               >
                 <span>{contact.label}</span>
                 <span className="mt-[9px] flex items-center gap-3.5 font-mono text-[8px] leading-[1.65] font-normal tracking-[0.035em] text-[#6e7961]">

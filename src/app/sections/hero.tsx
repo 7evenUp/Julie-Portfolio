@@ -14,7 +14,7 @@ const Hero = () => {
       aria-labelledby="hero-title"
     >
       <div className="relative z-2 grid shrink-0 grid-cols-[1fr_2fr] items-center pt-[clamp(24px,3svh,42px)] pb-4">
-        <div className="relative ml-[35px] w-[clamp(180px,16vw,270px)] wide:ml-[42px]">
+        <div className="hero-portrait relative ml-[35px] w-[clamp(180px,16vw,270px)] wide:ml-[42px]">
           <span className="absolute -top-[26px] -left-[18px] z-2 -rotate-10 font-handwriting text-[clamp(34px,3vw,48px)] leading-none font-medium whitespace-nowrap text-accent">
             Привет, я Юля!
           </span>
@@ -37,7 +37,7 @@ const Hero = () => {
           />
         </div>
 
-        <div className="relative pl-[29px] wide:pl-[45px]">
+        <div className="hero-intro relative pl-[29px] wide:pl-[45px]">
           <h1
             id="hero-title"
             className="relative w-fit text-[clamp(56px,4.85vw,92px)] leading-[1.12] font-normal tracking-[-0.065em] whitespace-nowrap"

@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import PageMotion from "@/components/page-motion"
 import Hero from "./sections/hero"
 import Work from "./sections/work"
 
@@ -40,7 +41,7 @@ const Home = () => {
   }
 
   return (
-    <div className="relative isolate min-w-[1120px] overflow-clip bg-page">
+    <PageMotion>
       <div
         className="page-grid pointer-events-none absolute inset-0 -z-1"
         aria-hidden="true"
@@ -62,7 +63,7 @@ const Home = () => {
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
-    </div>
+    </PageMotion>
   )
 }
 

@@ -7,7 +7,7 @@ import { projects } from "@/content/projects"
 
 export const Header = () => {
   return (
-    <header className="mx-auto flex h-[84px] w-[calc(100%-var(--gutter)*2)] max-w-[1632px] items-center justify-between border-b border-line">
+    <header className="site-header mx-auto flex h-[84px] w-[calc(100%-var(--gutter)*2)] max-w-[1632px] items-center justify-between border-b border-line">
       <Link
         href="/"
         className="group flex items-center gap-2.5 text-[24px] font-bold tracking-[-1.1px]"
