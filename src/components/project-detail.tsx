@@ -36,9 +36,6 @@ export const ProjectDetail = ({
           <span>
             {project.category} / {project.year}
           </span>
-          {project.isDemo && (
-            <span className="text-accent">Демо-концепция</span>
-          )}
         </div>
         <Heading
           id="project-title"

@@ -26,7 +26,6 @@ export type Project = {
   galleryLayout?: "carousel"
   /** An optional real project URL. Omit it when there is no public link. */
   url?: string
-  isDemo?: boolean
   layout: "wide" | "portrait" | "medium" | "offset" | "last"
   background: string
 }
@@ -34,63 +33,8 @@ export type Project = {
 /**
  * Add projects here. Place images in public/images/projects/.
  * Keep slugs unique and stable: these are the search-friendly project URLs.
- * Keep isDemo: false for actual portfolio projects; demos may stay alongside them.
  */
 export const projects: Project[] = [
-  {
-    slug: "orto-studio",
-    title: "ORTO — ближе к природе",
-    category: "Сайты",
-    year: "2026",
-    summary: "Концепция сайта студии озеленения.",
-    description:
-      "Демо-концепция сайта студии озеленения: главный экран и каталог растений. В макетах использованы оливковые оттенки, крупная типографика и карточки с фотографиями растений.",
-    services: ["Арт-дирекшн", "Веб-дизайн", "UI/UX"],
-    cover: {
-      src: "/images/projects/orto.svg",
-      alt: "Концепция сайта ORTO: оливковая палитра, растения и крупная типографика",
-      width: 1200,
-      height: 860,
-    },
-    gallery: [
-      {
-        src: "/images/projects/orto-detail.svg",
-        alt: "Детали концепции ORTO: карточки растений и композиция каталога",
-        width: 1200,
-        height: 860,
-      },
-    ],
-    isDemo: true,
-    layout: "wide",
-    background: "#dce0d0",
-  },
-  {
-    slug: "forma-poster",
-    title: "Форма звука",
-    category: "Афиши",
-    year: "2026",
-    summary: "Серия типографических афиш музыкального события.",
-    description:
-      "Демо-серия афиш для вымышленного музыкального события. Два цветовых варианта: лавандовый и лаймовый. Основные элементы композиции — крупный набор и объёмная лента.",
-    services: ["Графический дизайн", "Типографика", "Афиша"],
-    cover: {
-      src: "/images/projects/forma.svg",
-      alt: "Лавандовая музыкальная афиша «Форма звука» с лаймовой объёмной лентой",
-      width: 800,
-      height: 1040,
-    },
-    gallery: [
-      {
-        src: "/images/projects/forma-detail.svg",
-        alt: "Парные афиши «Форма звука» в лавандовом и лаймовом цветах",
-        width: 1200,
-        height: 860,
-      },
-    ],
-    isDemo: true,
-    layout: "portrait",
-    background: "#c0aee9",
-  },
   {
     slug: "wedding-stationery",
     title: "Свадебные приглашения и карточки гостей",
@@ -150,63 +94,8 @@ export const projects: Project[] = [
         height: 1800,
       },
     ],
-    isDemo: false,
     layout: "medium",
     background: "#ece8de",
-  },
-  {
-    slug: "lumi-campaign",
-    title: "LUMI — немного солнца",
-    category: "Баннеры",
-    year: "2026",
-    summary: "Рекламные баннеры косметического бренда.",
-    description:
-      "Демо-кампания для вымышленного косметического бренда. Широкий баннер и вертикальные постеры с изображением продукта на абрикосовом фоне.",
-    services: ["Баннеры", "Визуальная концепция", "Дизайн для соцсетей"],
-    cover: {
-      src: "/images/projects/lumi.svg",
-      alt: "Солнечный баннер косметического бренда LUMI в абрикосовых тонах",
-      width: 1200,
-      height: 860,
-    },
-    gallery: [
-      {
-        src: "/images/projects/lumi-detail.svg",
-        alt: "Вертикальные рекламные баннеры LUMI с продуктом и типографикой",
-        width: 1200,
-        height: 860,
-      },
-    ],
-    isDemo: true,
-    layout: "offset",
-    background: "#f0b58d",
-  },
-  {
-    slug: "objects-gallery",
-    title: "Объекты. Вне времени",
-    category: "Сайты",
-    year: "2026",
-    summary: "Концепция сайта галереи предметного дизайна.",
-    description:
-      "Демо-концепция сайта галереи предметного дизайна: главный экран и страница коллекции. Монохромная типографика сочетается с крупными изображениями предметов.",
-    services: ["Концепция", "Веб-дизайн", "Арт-дирекшн"],
-    cover: {
-      src: "/images/projects/objects.svg",
-      alt: "Минималистичный сайт галереи «Объекты» с хромированным предметом",
-      width: 1200,
-      height: 860,
-    },
-    gallery: [
-      {
-        src: "/images/projects/objects-detail.svg",
-        alt: "Внутренний экран сайта «Объекты»: коллекция предметов дизайна",
-        width: 1200,
-        height: 860,
-      },
-    ],
-    isDemo: true,
-    layout: "last",
-    background: "#d2d8e5",
   },
   {
     slug: "midnight-session",
@@ -255,7 +144,6 @@ export const projects: Project[] = [
       },
     ],
     url: "https://www.behance.net/gallery/255956425/Midnight-Session-Posters-Design-Concept",
-    isDemo: false,
     layout: "wide",
     background: "#c8aa87",
   },
@@ -301,7 +189,6 @@ export const projects: Project[] = [
       },
     ],
     url: "https://www.behance.net/gallery/255263293/Wedding-agensy-Landing-page",
-    isDemo: false,
     layout: "medium",
     background: "#ede5d9",
   },
@@ -364,7 +251,6 @@ export const projects: Project[] = [
         height: 2000,
       },
     ],
-    isDemo: false,
     layout: "portrait",
     background: "#3021d9",
   },
@@ -416,7 +302,6 @@ export const projects: Project[] = [
         height: 1308,
       },
     ],
-    isDemo: false,
     layout: "medium",
     background: "#faf3ed",
   },
@@ -480,7 +365,6 @@ export const projects: Project[] = [
       },
     ],
     galleryLayout: "carousel",
-    isDemo: false,
     layout: "medium",
     background: "#141414",
   },

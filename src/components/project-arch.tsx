@@ -15,13 +15,13 @@ export const ProjectArch = () => {
   return (
     <section
       id="project-arch"
-      className="relative left-1/2 isolate min-h-0 w-screen max-w-[1920px] flex-1 -translate-x-1/2 overflow-clip [container-type:size] [--arch-radius:min(clamp(320px,28.5vw,530px),80cqh)] [--card-size:min(clamp(132px,11.3vw,204px),32cqh)]"
-      aria-label="Анимированная арка из восьми карточек проектов"
+      className="relative left-1/2 isolate min-h-0 w-screen max-w-[1920px] flex-1 -translate-x-1/2 overflow-clip @container-size [--arch-base-radius:min(clamp(320px,28.5vw,530px),80cqh)] [--arch-radius:calc(var(--arch-base-radius)*0.86)] [--card-size:calc(var(--arch-base-radius)*0.44)]"
+      aria-label="Анимированная арка проектов"
       style={{ "--arch-duration": `${arch.durationSeconds}s` } as CSSProperties}
     >
       <div className="absolute inset-0 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-2 after:h-12 after:bg-[linear-gradient(transparent,var(--color-page))]">
         <div
-          className="absolute bottom-0 left-1/2 size-0 animate-arch-travel [transform:rotate(-90deg)] will-change-transform"
+          className="absolute bottom-0 left-1/2 size-0 animate-arch-travel transform-[rotate(-90deg)] will-change-transform"
           aria-hidden="true"
         >
           {wheelItems.map((item, index) => (
@@ -41,7 +41,7 @@ export const ProjectArch = () => {
                   alt=""
                   width={400}
                   height={400}
-                  sizes="(min-width: 1600px) 190px, 155px"
+                  sizes="(min-width: 1860px) 234px, (min-width: 1123px) 12.54vw, 141px"
                 />
               </div>
             </div>

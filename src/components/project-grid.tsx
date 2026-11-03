@@ -12,36 +12,31 @@ import type { Category, Project } from "@/content/projects"
 
 import { cn } from "@/lib/cn"
 
-const projectLayouts: Record<Project["layout"], string> = {
-  wide: "col-start-1 col-end-8 row-start-1",
-  portrait: "col-start-10 col-end-13 row-start-1 pt-[140px] wide:pt-[190px]",
-  medium: "col-start-2 col-end-7 row-start-2 pt-[90px]",
-  offset: "col-start-8 col-end-13 row-start-2 pt-[210px] wide:pt-[240px]",
-  last: "col-start-2 col-end-10 row-start-3 pt-[110px]",
+// Позиции закреплены за работами: размер и отступ не зависят от их типа.
+const projectLayouts: Record<string, string> = {
+  "wedding-stationery": "col-start-1 col-end-8 row-start-1",
+  "midnight-session":
+    "col-start-10 col-end-13 row-start-1 pt-[140px] wide:pt-[190px]",
+  "tete-a-tete": "col-start-2 col-end-7 row-start-2 pt-[90px]",
+  "poster-studies":
+    "col-start-8 col-end-13 row-start-2 pt-[210px] wide:pt-[240px]",
+  forma: "col-start-2 col-end-10 row-start-3 pt-[110px]",
+  "vibe-coding-banners":
+    "col-start-7 col-end-13 row-start-4 pt-[110px] wide:pt-[140px]",
 }
-
-const continuationLayouts = [
-  "col-start-1 col-end-6 row-auto pt-[110px] wide:pt-[140px]",
-  "col-start-8 col-end-13 row-auto pt-[270px] wide:pt-[330px]",
-]
 
 const ProjectCard = ({
   project,
-  index,
   isFiltered,
 }: {
   project: Project
-  index: number
   isFiltered: boolean
 }) => {
   return (
     <article
       className={cn(
         "relative min-w-0 animate-card-enter",
-        !isFiltered &&
-          (index >= 5
-            ? continuationLayouts[(index - 5) % continuationLayouts.length]
-            : projectLayouts[project.layout]),
+        !isFiltered && projectLayouts[project.slug],
       )}
     >
       <Link
@@ -75,11 +70,6 @@ const ProjectCard = ({
           <div>
             <h3 className="text-[14px] font-medium tracking-[-0.25px] wide:text-[17px]">
               {project.title}
-              {project.isDemo && (
-                <span className="ml-[9px] inline-block border border-line px-[5px] py-px align-middle font-mono text-[7px] leading-[1.65] font-normal tracking-[0.03em] text-muted wide:text-[11px]">
-                  Демо
-                </span>
-              )}
             </h3>
             <p className="mt-[5px] text-[10px] leading-[1.6] text-muted wide:text-xs">
               {project.summary}
@@ -109,15 +99,6 @@ export const ProjectGrid = () => {
   const visibleProjects = projects.filter(
     (project) => !isFiltered || project.category === selectedCategory,
   )
-
-  const hasRealProjects = projects.some((project) => !project.isDemo)
-  const hasDemoProjects = projects.some((project) => project.isDemo)
-  const projectLabel =
-    hasRealProjects && hasDemoProjects
-      ? "Авторские проекты и демо-концепции"
-      : hasDemoProjects
-        ? "Демонстрационные концепции"
-        : "Авторские проекты"
 
   return (
     <>
@@ -150,7 +131,7 @@ export const ProjectGrid = () => {
         </div>
         <span className="flex items-center gap-[7px] font-mono text-[8px] leading-[1.65] font-normal tracking-[0.035em] whitespace-nowrap text-[#959b8c] wide:text-[9px]">
           <span className="size-1 rounded-full bg-accent" />
-          {projectLabel}
+          Авторские проекты
         </span>
       </div>
 
@@ -164,10 +145,9 @@ export const ProjectGrid = () => {
           isFiltered && "min-h-[550px] grid-cols-2 items-start gap-10",
         )}
       >
-        {visibleProjects.map((project, index) => (
+        {visibleProjects.map((project) => (
           <ProjectCard
             project={project}
-            index={index}
             isFiltered={isFiltered}
             key={project.slug}
           />
