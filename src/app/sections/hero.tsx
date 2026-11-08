@@ -43,9 +43,10 @@ const Hero = () => {
           <p className="mt-[18px] max-w-[490px] text-base leading-[1.65] tracking-[-0.025em] text-[#b8bcb3] wide:max-w-[560px] wide:text-lg">
             {site.introduction}
           </p>
-          <AmbientSculpture className="absolute right-3 bottom-0 size-[76px] mr-0 wide:right-5 wide:size-[90px]" />
         </div>
       </div>
+
+      <AmbientSculpture />
 
       <ProjectArch />
     </section>
