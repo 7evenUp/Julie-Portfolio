@@ -6,7 +6,7 @@ import { AmbientSculpture } from "@/components/ambient"
 import { AnimatedSticker } from "@/components/animated-sticker"
 import { ProjectArch } from "@/components/project-arch"
 
-import { heroTypewriter, site } from "@/content/site"
+import { site } from "@/content/site"
 
 const Hero = () => {
   return (
@@ -39,7 +39,7 @@ const Hero = () => {
         </div>
 
         <div className="hero-intro relative pl-[29px] wide:pl-[45px]">
-          <HeroHeading {...heroTypewriter} />
+          <HeroHeading />
           <p className="mt-[18px] max-w-[490px] text-base leading-[1.65] tracking-[-0.025em] text-[#b8bcb3] wide:max-w-[560px] wide:text-lg">
             {site.introduction}
           </p>

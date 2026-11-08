@@ -2,14 +2,10 @@
 
 import { useEffect, useRef, useState } from "react"
 
-interface HeroHeadingProps {
-  words: readonly string[]
-  typingMs?: number
-  deletingMs?: number
-  holdMs?: number
-  emptyMs?: number
-  initialHoldMs?: number
-}
+import { heroTypewriter } from "@/content/site"
+
+const { words, typingMs, deletingMs, holdMs, emptyMs, initialHoldMs } =
+  heroTypewriter
 
 const DesignLabel = () => (
   <span className="group relative mr-6 bg-accent font-bold text-black">
@@ -21,14 +17,7 @@ const DesignLabel = () => (
   </span>
 )
 
-const HeroHeading = ({
-  words,
-  typingMs = 30,
-  deletingMs = 20,
-  holdMs = 1000,
-  emptyMs = 150,
-  initialHoldMs = 2000,
-}: HeroHeadingProps) => {
+const HeroHeading = () => {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const [isRunning, setIsRunning] = useState(false)
   const [isReducedMotion, setIsReducedMotion] = useState(false)
@@ -71,6 +60,7 @@ const HeroHeading = ({
       empty: emptyMs,
       typing: typingMs,
     }
+    
     const timer = window.setTimeout(
       () => {
         setFrame((current) => {
