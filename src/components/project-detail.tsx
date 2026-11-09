@@ -49,7 +49,7 @@ export const ProjectDetail = ({
         <p className="mt-[17px] text-base leading-[1.7] text-[#a2ad97]">
           {project.summary}
         </p>
-        {project.url && (
+        {!inModal && project.url && (
           <ProjectLink href={project.url} className="mt-[17px]" />
         )}
       </div>
@@ -113,9 +113,17 @@ export const ProjectDetail = ({
           kind={project.category === "Баннеры" ? "banners" : "posters"}
         />
       ) : (
-        <div className="grid gap-[25px]">
+        <div
+          className={cn(
+            "grid",
+            project.galleryLayout !== "continuous" && "gap-[25px]",
+          )}
+        >
           {project.gallery.map((image) => (
-            <figure key={image.src}>
+            <figure
+              key={image.src}
+              className={image.trimBottom ? "overflow-hidden" : undefined}
+            >
               {image.title && (
                 <figcaption className="mb-[15px] font-mono text-xs leading-[1.65] text-[#a2ad97]">
                   {image.title}
@@ -127,6 +135,13 @@ export const ProjectDetail = ({
                 alt={image.alt}
                 width={image.width}
                 height={image.height}
+                style={
+                  image.trimBottom
+                    ? {
+                        marginBottom: `-${(image.trimBottom / image.width) * 100}%`,
+                      }
+                    : undefined
+                }
                 sizes="(min-width: 1300px) 1100px, 90vw"
               />
             </figure>

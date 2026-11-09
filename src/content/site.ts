@@ -6,9 +6,8 @@ export const site = {
   introduction:
     "Дизайню всё подряд — сайты, афиши, баннеры и даже приглашения на свадьбу!",
   portrait: "/images/julie.jpg",
-  email: "",
-  telegram: "",
-  behance: "",
+  telegram: "https://t.me/Khorolskaya_YM",
+  behance: "https://www.behance.net/yuliyaho",
 }
 
 export const heroTypewriter = {

@@ -18,10 +18,11 @@ export type Project = {
     src: string
     alt: string
     title?: string
+    trimBottom?: number
     width: number
     height: number
   }[]
-  galleryLayout?: "carousel"
+  galleryLayout?: "carousel" | "continuous"
   /** An optional real project URL. Omit it when there is no public link. */
   url?: string
   layout: "wide" | "portrait" | "medium" | "offset" | "last"
@@ -96,6 +97,7 @@ export const projects: Project[] = [
   },
   {
     slug: "midnight-session",
+    galleryLayout: "continuous",
     title: "Midnight Session",
     category: "Афиши",
     summary: "Рекламная афиша джазового вечера при свечах.",
@@ -122,6 +124,7 @@ export const projects: Project[] = [
       },
       {
         src: "/images/projects/midnight-session/concept.webp",
+        trimBottom: 85,
         alt: "Типографика и колористика Midnight Session: Montserrat, FoglihtenNo06 и светлая палитра на тёмном фоне",
         width: 1920,
         height: 1845,
@@ -145,6 +148,7 @@ export const projects: Project[] = [
   },
   {
     slug: "tete-a-tete",
+    galleryLayout: "continuous",
     title: "Tête-à-tête — свадебное агентство",
     category: "Сайты",
     summary: "Лендинг свадебного агентства с мобильной адаптацией.",

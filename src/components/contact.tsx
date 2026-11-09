@@ -1,17 +1,21 @@
 import { AnimatedSticker } from "./animated-sticker"
-import { ArrowUpRight, Asterisk } from "./icons"
+import { Asterisk } from "./icons"
 import { CatSticker } from "./cat-sticker"
 
 import { site } from "@/content/site"
 
 export const Contact = () => {
   const contacts = [
-    { label: "Telegram", href: site.telegram },
     {
-      label: "Электронная почта",
-      href: site.email ? `mailto:${site.email}` : "",
+      label: "Telegram",
+      href: site.telegram,
+      icon: "M22.05 2.87 1.42 10.83c-1.41.57-1.4 1.35-.26 1.7l5.3 1.65L18.73 6.44c.58-.35 1.11-.16.67.22l-9.94 8.97-.37 5.47c.54 0 .78-.25 1.08-.54l2.59-2.52 5.39 3.98c.99.55 1.7.27 1.95-.91l3.54-16.69c.36-1.45-.55-2.11-1.59-1.55Z",
     },
-    { label: "Behance", href: site.behance },
+    {
+      label: "Behance",
+      href: site.behance,
+      icon: "M0 4h7.5c3 0 4.7 1.5 4.7 4 0 1.5-.7 2.5-1.9 3.1 1.7.5 2.7 1.9 2.7 3.9 0 3-2.2 5-5.3 5H0V4Zm3.5 2.7V10H7c1.2 0 1.8-.6 1.8-1.7S8.1 6.7 7 6.7H3.5Zm0 5.8v4.8h3.7c1.5 0 2.3-.8 2.3-2.4 0-1.5-.8-2.4-2.3-2.4H3.5ZM15.5 5.5h7v1.8h-7zM24 15H16c.1 1.7 1.1 2.7 2.7 2.7 1.1 0 1.9-.5 2.2-1.2h2.9c-.7 2.4-2.5 3.7-5.1 3.7-3.5 0-5.8-2.4-5.8-6s2.4-6 5.8-6c3.6 0 5.5 2.8 5.3 6.8Zm-8-2h4.8c-.2-1.5-1-2.3-2.3-2.3s-2.3.8-2.5 2.3Z",
+    },
   ]
 
   return (
@@ -60,13 +64,18 @@ export const Contact = () => {
                 data-reveal="contact"
                 data-reveal-step={index + 1}
                 href={contact.href}
-                target={
-                  contact.href.startsWith("mailto:") ? undefined : "_blank"
-                }
+                target="_blank"
                 rel="noopener noreferrer"
               >
+                <svg
+                  aria-hidden="true"
+                  className="size-4"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d={contact.icon} />
+                </svg>
                 {contact.label}
-                <ArrowUpRight className="size-[13px]" />
               </a>
             ) : (
               <div
@@ -77,7 +86,7 @@ export const Contact = () => {
               >
                 <span>{contact.label}</span>
                 <span className="mt-[9px] flex items-center gap-3.5 font-mono text-[8px] leading-[1.65] font-normal tracking-[0.035em] text-[#6e7961]">
-                  Скоро <ArrowUpRight className="size-[13px]" />
+                  Скоро
                 </span>
               </div>
             ),

@@ -33,7 +33,6 @@ const Home = () => {
         "Свадебная полиграфия",
       ],
       ...(siteUrl ? { url: siteUrl } : {}),
-      ...(site.email ? { email: site.email } : {}),
       ...(site.telegram || site.behance
         ? { sameAs: [site.telegram, site.behance].filter(Boolean) }
         : {}),
