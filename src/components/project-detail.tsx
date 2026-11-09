@@ -30,23 +30,19 @@ export const ProjectDetail = ({
   const nextProject = getNextProject(project.slug, language)
   const Heading = inModal ? "h2" : "h1"
   const hasCarousel = project.galleryLayout === "carousel"
+  const imageSizes = inModal
+    ? "(min-width: 1200px) 990px, (min-width: 640px) 80vw, 90vw"
+    : "(min-width: 1100px) 1012px, 90vw"
 
   return (
-    <article
-      className={cn(hasCarousel ? "p-5 sm:p-8 lg:p-11" : "p-11", className)}
-    >
+    <article className={cn("p-(--project-gutter)", className)}>
       <div>
-        <div className="flex justify-between font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#a9b09f] wide:text-[11px]">
+        <div className="font-mono text-[11px] leading-[1.65] tracking-[0.035em] text-[#a9b09f]">
           <span>{categoryLabels[language][project.category]}</span>
         </div>
         <Heading
           id="project-title"
-          className={cn(
-            "mt-[25px] leading-[1.2] font-normal",
-            hasCarousel
-              ? "text-[32px] tracking-[-0.05em] sm:text-[44px] lg:text-[51px]"
-              : "text-[51px] tracking-[-2.5px]",
-          )}
+          className="mt-3 text-[clamp(30px,6.2vw,51px)] leading-[1.14] font-normal tracking-[-0.05em] text-balance wrap-anywhere sm:mt-[25px]"
         >
           {project.title}
         </Heading>
@@ -54,52 +50,41 @@ export const ProjectDetail = ({
           {project.summary}
         </p>
         {!inModal && project.url && (
-          <ProjectLink href={project.url} label={copy.view} className="mt-[17px]" />
+          <ProjectLink
+            href={project.url}
+            label={copy.view}
+            className="mt-[17px]"
+          />
         )}
       </div>
 
       <Image
-        className="mt-[34px] w-full"
+        className="mt-6 w-full sm:mt-[34px]"
         src={project.cover.src}
         alt={project.cover.alt}
         width={project.cover.width}
         height={project.cover.height}
-        sizes="(min-width: 1300px) 1100px, 90vw"
-        priority
+        sizes={imageSizes}
+        preload
       />
 
-      <div
-        className={cn(
-          "my-[50px] grid",
-          hasCarousel
-            ? "gap-8 sm:grid-cols-[2fr_1fr] sm:gap-10"
-            : "grid-cols-[2fr_1fr] gap-[70px]",
-        )}
-      >
+      <div className="my-8 grid gap-6 sm:my-[50px] sm:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] sm:gap-8 lg:gap-16">
         <div>
-          <span className="font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#7e8c70] wide:text-[11px]">
+          <span className="font-mono text-xs leading-[1.65] tracking-[0.035em] text-[#a9b09f]">
             {copy.about}
           </span>
-          <p
-            className={cn(
-              "mt-[15px] leading-[1.95] text-[#bdc7b2]",
-              hasCarousel ? "text-base" : "text-[14px]",
-            )}
-          >
+          <p className="mt-2 max-w-[66ch] text-[15px] leading-[1.75] text-[#bdc7b2] sm:mt-3 sm:text-base">
             {project.description}
           </p>
         </div>
         <div>
-          <span className="font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#7e8c70] wide:text-[11px]">
+          <span className="font-mono text-xs leading-[1.65] tracking-[0.035em] text-[#a9b09f]">
             {copy.services}
           </span>
-          <ul className="mt-[15px] list-none p-0">
+          <ul className="mt-2 list-none p-0 sm:mt-3">
             {project.services.map((service) => (
               <li
-                className={cn(
-                  "leading-[2.2] text-[#bdc7b2]",
-                  hasCarousel ? "text-base" : "text-xs",
-                )}
+                className="text-[15px] leading-[1.8] text-[#bdc7b2]"
                 key={service}
               >
                 {service}
@@ -121,7 +106,7 @@ export const ProjectDetail = ({
         <div
           className={cn(
             "grid",
-            project.galleryLayout !== "continuous" && "gap-[25px]",
+            project.galleryLayout !== "continuous" && "gap-3 sm:gap-[25px]",
           )}
         >
           {project.gallery.map((image) => (
@@ -147,7 +132,7 @@ export const ProjectDetail = ({
                       }
                     : undefined
                 }
-                sizes="(min-width: 1300px) 1100px, 90vw"
+                sizes={imageSizes}
               />
             </figure>
           ))}
@@ -156,19 +141,19 @@ export const ProjectDetail = ({
 
       <Link
         href={`/projects/${nextProject.slug}`}
-        className="group mt-[45px] flex items-center justify-between border-t border-[#3a4531] pt-[30px]"
+        className="group mt-8 flex items-center justify-between gap-3 border-t border-[#3a4531] pt-5 sm:mt-[45px] sm:pt-[30px]"
         replace={inModal}
         scroll={!inModal}
       >
-        <div>
-          <span className="font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#7e8c70]">
+        <div className="min-w-0">
+          <span className="font-mono text-xs leading-[1.65] tracking-[0.035em] text-[#a9b09f]">
             {copy.next}
           </span>
-          <p className="mt-2.5 text-[25px] tracking-[-0.8px]">
+          <p className="mt-1.5 text-xl tracking-[-0.035em] wrap-anywhere sm:text-[25px]">
             {nextProject.title}
           </p>
         </div>
-        <ArrowUpRight className="size-[35px] text-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+        <ArrowUpRight className="size-6 shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 sm:size-[35px]" />
       </Link>
     </article>
   )

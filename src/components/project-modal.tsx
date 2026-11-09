@@ -39,13 +39,10 @@ export const ProjectModal = ({
     if (!isProjectRoute) return
 
     const dialog = dialogRef.current
-    const previousOverflow = document.body.style.overflow
     dialog?.showModal()
-    document.body.style.overflow = "hidden"
 
     return () => {
       dialog?.close()
-      document.body.style.overflow = previousOverflow
     }
   }, [isProjectRoute])
 
@@ -57,22 +54,22 @@ export const ProjectModal = ({
 
   return (
     <dialog
-      className="m-auto max-h-[90vh] w-[min(1080px,90vw)] max-w-none animate-modal-enter overflow-auto overscroll-contain border-0 bg-transparent p-0 text-ink outline-none [scrollbar-color:#59644c_#1c2118] backdrop:bg-[#080b08c9] backdrop:backdrop-blur-[12px]"
+      className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none animate-modal-enter overflow-auto overscroll-contain scroll-pt-16 border-0 bg-[#181c16] p-0 text-ink outline-none [scrollbar-color:#59644c_#1c2118] backdrop:bg-[#080b08c9] backdrop:backdrop-blur-[12px] sm:m-auto sm:h-auto sm:max-h-[90dvh] sm:w-[min(1080px,90%)] sm:scroll-pt-[72px]"
       ref={dialogRef}
       aria-labelledby="project-title"
       onCancel={handleCancel}
       onClick={handleBackdropClick}
     >
-      <div className="border border-[#38422e] bg-[#181c16]">
-        <div className="sticky top-0 z-3 flex h-16 items-center justify-between border-b border-[#323b2b] bg-[#181c16f5] px-[35px] backdrop-blur-[16px]">
+      <div className="sm:border sm:border-[#38422e]">
+        <div className="sticky top-0 z-3 flex min-h-14 items-center justify-between gap-2 border-b border-[#323b2b] bg-[#181c16f5] px-(--project-gutter) py-1 backdrop-blur-[16px] sm:min-h-16">
           {projectUrl && <ProjectLink href={projectUrl} label={labels.view} />}
           <button
-            className="ml-auto flex shrink-0 items-center gap-5 py-2.5 pl-5 hover:text-accent"
+            className="ml-auto flex min-h-11 shrink-0 items-center gap-2 px-1 hover:text-accent sm:gap-5 sm:px-2"
             type="button"
             onClick={handleClose}
             aria-label={labels.closeLabel}
           >
-            <span className="font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] wide:text-[11px]">
+            <span className="font-mono text-[11px] leading-[1.65] tracking-[0.035em]">
               {labels.close}
             </span>
             <span

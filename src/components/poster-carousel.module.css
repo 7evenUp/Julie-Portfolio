@@ -71,8 +71,8 @@
 
 .control {
   display: grid;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   border-radius: 50%;
   background: var(--color-accent);
@@ -100,9 +100,16 @@
   color: var(--color-muted);
 }
 
-@media (max-width: 640px) {
+@container (width < 36rem) {
   .slide {
-    border-radius: 18px;
+    border-radius: clamp(10px, 3.5cqw, 18px);
+  }
+}
+
+@media (min-width: 640px) {
+  .control {
+    width: 48px;
+    height: 48px;
   }
 }
 

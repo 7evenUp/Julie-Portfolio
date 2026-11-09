@@ -9,19 +9,19 @@ import type { Language } from "@/lib/language"
 const Work = ({ language }: { language: Language }) => {
   return (
     <section
-      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-[94px] pb-10"
+      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-14 pb-5 sm:pt-18 composition:pt-[94px] composition:pb-10"
       aria-labelledby="work"
     >
       <AnimatedSticker
         sticker="work"
-        className="top-2 right-[23%] w-20 -rotate-12"
+        className="top-7 right-[28%] w-12 -rotate-12 sm:top-5 sm:w-16 composition:top-2 composition:right-[23%] composition:w-20"
       />
 
-      <div className="relative mt-10 flex items-end justify-between">
+      <div className="relative flex items-end justify-between composition:mt-10">
         <CatSticker cat="surprised" placement="work" />
         <h2
           id="work"
-          className="text-[clamp(54px,5.2vw,85px)] leading-[1.14] font-normal tracking-[-0.06em]"
+          className="text-[clamp(38px,8vw,56px)] leading-[1.14] font-normal tracking-[-0.06em] composition:text-[clamp(54px,5.2vw,85px)]"
         >
           {siteCopy[language].header.projects}
         </h2>

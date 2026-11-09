@@ -68,13 +68,11 @@ const PageMotion = ({ children }: { children: ReactNode }) => {
 
   // Оставляем фон под закреплённым хедером, сохраняя отступ для контента.
   return (
-    <div className="-mt-(--site-header-height) max-[1120px]:overflow-x-auto">
-      <div
-        ref={rootRef}
-        className="relative isolate min-w-[1120px] overflow-clip bg-page pt-(--site-header-height)"
-      >
-        {children}
-      </div>
+    <div
+      ref={rootRef}
+      className="relative isolate -mt-(--site-header-height) overflow-clip bg-page pt-(--site-header-height)"
+    >
+      {children}
     </div>
   )
 }

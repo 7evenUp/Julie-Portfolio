@@ -25,7 +25,7 @@ const LanguageSwitch = ({
       aria-label={label}
       aria-disabled={pending}
       onClick={handleClick}
-      className="group grid h-11 w-[66px] place-items-center rounded-full hover:bg-white/9 aria-disabled:opacity-65 min-[360px]:w-[88px] sm:h-12 sm:w-[108px]"
+      className="group grid h-11 w-[60px] place-items-center rounded-full hover:bg-white/9 aria-disabled:opacity-65 min-[360px]:w-[76px] sm:h-12 sm:w-[108px]"
     >
       <span
         aria-hidden="true"

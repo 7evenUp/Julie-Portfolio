@@ -15,7 +15,7 @@ const cats = {
 }
 
 const placements = {
-  work: "left-1/4 -bottom-10 w-[clamp(100px,8.2vw,140px)]",
+  work: "right-2 -bottom-2 w-[clamp(54px,11vw,84px)] composition:right-auto composition:left-1/4 composition:-bottom-10 composition:w-[clamp(100px,8.2vw,140px)]",
   about:
     "top-[70px] left-[132px] w-[clamp(100px,8.5vw,145px)] rotate-9 text-muted wide:left-[150px]",
   contact:
@@ -45,13 +45,18 @@ export const CatSticker = ({ cat, placement }: CatStickerProps) => {
         alt=""
         width={image.width}
         height={image.height}
-        sizes="(min-width: 1600px) 160px, 128px"
+        sizes={
+          placement === "work"
+            ? "(min-width: 1120px) 140px, 84px"
+            : "(min-width: 1600px) 168px, 128px"
+        }
         draggable={false}
       />
       <span
         className={cn(
           "absolute top-[5%] right-[-15%] text-[27px] leading-none text-accent after:absolute after:top-[27px] after:left-[15px] after:text-xs after:content-['✦']",
-          placement === "work" && "top-[20%] right-auto left-[-13%]",
+          placement === "work" &&
+            "top-[20%] right-auto left-[-13%] max-composition:text-lg max-composition:after:top-[18px]",
           placement === "contact" &&
             "top-[10%] right-[-16%] text-[33px] leading-none",
         )}

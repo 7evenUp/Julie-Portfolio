@@ -47,7 +47,7 @@ const Home = async () => {
           aria-hidden="true"
         />
 
-        <main id="main">
+        <main id="main" tabIndex={-1}>
           <Hero language={language} />
           <Work language={language} />
           <Contact language={language} />

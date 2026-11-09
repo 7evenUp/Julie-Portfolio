@@ -4,20 +4,35 @@ import { useEffect, useRef, useState } from "react"
 
 import { heroTypewriter } from "@/content/site"
 
-const { typingMs, deletingMs, holdMs, emptyMs, initialHoldMs } =
-  heroTypewriter
+const { typingMs, deletingMs, holdMs, emptyMs, initialHoldMs } = heroTypewriter
 
 const DesignLabel = ({ text }: { text: string }) => (
-  <span className="group relative mr-6 bg-accent font-bold text-black">
-    {text}{" "}
-    <span className="absolute -top-2 -left-2 size-4 border-t border-l border-accent transition-transform group-hover:scale-[115%]" />
-    <span className="absolute -bottom-2 -left-2 size-4 border-b border-l border-accent transition-transform group-hover:scale-[115%]" />
-    <span className="absolute -top-2 -right-2 size-4 border-t border-r border-accent transition-transform group-hover:scale-[115%]" />
-    <span className="absolute -right-2 -bottom-2 size-4 border-r border-b border-accent transition-transform group-hover:scale-[115%]" />
+  <span className="group relative mr-[0.27em] bg-accent pr-[0.12em] font-bold text-black lg:mr-6">
+    {text}
+    <span className="absolute -top-[0.12em] -left-[0.12em] size-[0.25em] border-t border-l border-accent transition-transform group-hover:scale-[115%]" />
+    <span className="absolute -bottom-[0.12em] -left-[0.12em] size-[0.25em] border-b border-l border-accent transition-transform group-hover:scale-[115%]" />
+    <span className="absolute -top-[0.12em] -right-[0.12em] size-[0.25em] border-t border-r border-accent transition-transform group-hover:scale-[115%]" />
+    <span className="absolute -right-[0.12em] -bottom-[0.12em] size-[0.25em] border-r border-b border-accent transition-transform group-hover:scale-[115%]" />
   </span>
 )
 
-const HeroHeading = ({ design, words }: { design: string; words: string[] }) => {
+const TypedText = ({ text, compact }: { text: string; compact: boolean }) => (
+  <span className={compact ? "max-lg:text-[0.84em]" : undefined}>
+    {text.slice(0, -1)}
+    <span className="whitespace-nowrap">
+      {text.slice(-1)}
+      <span className="hero-caret" />
+    </span>
+  </span>
+)
+
+const HeroHeading = ({
+  design,
+  words,
+}: {
+  design: string
+  words: string[]
+}) => {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const [isRunning, setIsRunning] = useState(false)
   const [isReducedMotion, setIsReducedMotion] = useState(false)
@@ -60,7 +75,7 @@ const HeroHeading = ({ design, words }: { design: string; words: string[] }) => 
       empty: emptyMs,
       typing: typingMs,
     }
-    
+
     const timer = window.setTimeout(
       () => {
         setFrame((current) => {
@@ -98,16 +113,18 @@ const HeroHeading = ({ design, words }: { design: string; words: string[] }) => 
     initialHoldMs,
   ])
 
-  const word = words[frame.wordIndex % words.length] ?? ""
-  const text = isReducedMotion ? (words[0] ?? "") : word.slice(0, frame.length)
+  const word = words[isReducedMotion ? 0 : frame.wordIndex % words.length] ?? ""
+  const text = isReducedMotion ? word : word.slice(0, frame.length)
 
   return (
     <h1
       ref={headingRef}
       id="hero-title"
-      className="relative grid w-full text-[clamp(56px,4.85vw,92px)] leading-[1.12] font-normal tracking-[-0.065em]"
+      className="relative grid w-full text-[clamp(32px,8.4vw,49px)] leading-[1.14] font-normal tracking-[-0.065em] wrap-anywhere sm:text-[clamp(39px,5.55vw,56px)] lg:text-[clamp(52px,4.85vw,92px)] lg:leading-[1.12]"
     >
-      <span className="sr-only">{design} {words.join(", ")}</span>
+      <span className="sr-only">
+        {design} {words.join(", ")}
+      </span>
 
       {/* Все фразы резервируют место: при печати не сдвигаются описание и арка. */}
       {words.map((phrase, index) => (
@@ -116,20 +133,14 @@ const HeroHeading = ({ design, words }: { design: string; words: string[] }) => 
           aria-hidden="true"
           className="invisible pointer-events-none select-none [grid-area:1/1]"
         >
-          <span className="mr-6 font-bold">{design}{" "}</span> {phrase.slice(0, -1)}
-          <span className="whitespace-nowrap">
-            {phrase.slice(-1)}
-            <span className="hero-caret" />
-          </span>
+          <DesignLabel text={design} />{" "}
+          <TypedText text={phrase} compact={phrase.length >= 28} />
         </span>
       ))}
 
       <span aria-hidden="true" className="[grid-area:1/1]">
-        <DesignLabel text={design} /> {text.slice(0, -1)}
-        <span className="whitespace-nowrap">
-          {text.slice(-1)}
-          <span className="hero-caret" />
-        </span>
+        <DesignLabel text={design} />{" "}
+        <TypedText text={text} compact={word.length >= 28} />
       </span>
     </h1>
   )

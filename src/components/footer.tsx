@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { ArrowUpRight, Asterisk, Globe } from "./icons"
 
 import { site, siteCopy } from "@/content/site"
@@ -8,20 +10,20 @@ export const Footer = ({ language }: { language: Language }) => {
   const copy = siteCopy[language]
 
   return (
-    <footer className="w-full font-mono text-[8px] leading-[1.65] font-normal tracking-[0.035em] text-[#7a866c] wide:text-[11px] bg-line">
-      <div className="max-w-[1632px] flex items-center justify-between mx-auto w-[calc(100%-var(--gutter)*2)] h-[95px]">
-        <a
-          href="#"
-          className="flex items-center gap-3 font-sans text-[13px] font-semibold tracking-[-0.3px] text-ink"
+    <footer className="w-full bg-line font-mono text-[11px] leading-[1.65] font-normal tracking-[0.035em] text-[#a6b296]">
+      <div className="mx-auto grid w-[calc(100%-var(--gutter)*2)] max-w-[1632px] grid-cols-[1fr_auto] items-center gap-x-3 py-3 sm:flex sm:min-h-[95px] sm:justify-between">
+        <Link
+          href="/#main"
+          className="flex min-h-11 w-fit items-center gap-2 font-sans text-sm font-semibold tracking-[-0.3px] text-ink"
         >
           {site.brand}
           <Asterisk className="size-3 text-accent" />
-        </a>
-        <span>© 2026 {copy.formalName}</span>
-        <a href="#main" className="flex items-center gap-3">
+        </Link>
+        <span className="justify-self-end">© 2026 {copy.formalName}</span>
+        <Link href="/#main" className="flex min-h-11 w-fit items-center gap-2">
           {copy.backToTop} <ArrowUpRight className="size-3" />
-        </a>
-        <Globe className="h-7 w-12 text-[#a6b296]" />
+        </Link>
+        <Globe className="h-7 w-12 justify-self-end" />
       </div>
     </footer>
   )

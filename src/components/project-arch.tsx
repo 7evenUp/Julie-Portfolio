@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 import { ArrowDown } from "./icons"
 
@@ -19,11 +20,11 @@ export const ProjectArch = ({
   return (
     <section
       id="project-arch"
-      className="relative isolate min-h-0 w-screen max-w-[1920px] flex-1 overflow-clip @container-size [--arch-base-radius:min(46vw,calc((100cqh-76px)*0.89))] [--arch-radius:calc(var(--arch-base-radius)*0.86)] [--card-size:calc(var(--arch-base-radius)*0.44)] max-md:-ml-(--gutter) md:left-1/2 md:-translate-x-1/2 md:[--arch-base-radius:min(clamp(380px,34vw,630px),89cqh)]"
+      className="relative left-1/2 isolate h-[clamp(162px,47vw,290px)] w-dvw max-w-[1920px] -translate-x-1/2 overflow-clip @container-size [--arch-base-radius:min(46vw,calc((100cqh-36px)*0.89))] [--arch-radius:calc(var(--arch-base-radius)*0.86)] [--card-size:calc(var(--arch-base-radius)*0.44)] sm:h-[clamp(280px,43vw,380px)] sm:[--arch-base-radius:min(43vw,89cqh)] lg:h-auto lg:min-h-[236px] lg:flex-1 lg:[--arch-base-radius:min(clamp(380px,34vw,630px),89cqh)]"
       aria-label={label}
       style={{ "--arch-duration": `${arch.durationSeconds}s` } as CSSProperties}
     >
-      <div className="absolute inset-0 max-md:bottom-[76px] max-md:overflow-clip after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-2 after:h-12 after:bg-[linear-gradient(transparent,var(--color-page))]">
+      <div className="absolute inset-0 overflow-clip max-sm:bottom-9 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-2 after:h-8 after:bg-[linear-gradient(transparent,var(--color-page))] sm:after:h-12">
         <div
           className="absolute bottom-0 left-1/2 size-0 animate-arch-travel transform-[rotate(-90deg)] will-change-transform"
           aria-hidden="true"
@@ -45,7 +46,7 @@ export const ProjectArch = ({
                   alt=""
                   width={400}
                   height={400}
-                  sizes="(max-width: 767px) 20.24vw, (max-width: 1118px) 168px, (max-width: 1853px) 14.96vw, 278px"
+                  sizes="(max-width: 639px) 20vw, (max-width: 1023px) 18vw, (max-width: 1118px) 168px, (max-width: 1853px) 15vw, 278px"
                 />
               </div>
             </div>
@@ -53,13 +54,13 @@ export const ProjectArch = ({
         </div>
       </div>
 
-      <a
-        href="#work"
-        className="glass-button absolute bottom-5 left-1/2 z-3 -translate-x-1/2 border border-white/15 px-5 backdrop-blur-xl md:bottom-[clamp(24px,4svh,48px)]"
+      <Link
+        href="/#work"
+        className="glass-button absolute bottom-1 left-1/2 z-3 -translate-x-1/2 border border-white/15 px-5 backdrop-blur-xl sm:bottom-[clamp(16px,4svh,48px)]"
       >
         <ArrowDown className="size-3.5 sm:size-[18px]" />
         {linkLabel}
-      </a>
+      </Link>
     </section>
   )
 }

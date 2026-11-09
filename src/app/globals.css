@@ -9,6 +9,7 @@
   --font-sans: "Manrope Variable", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
   --font-handwriting: "Caveat", cursive;
+  --breakpoint-composition: 70rem;
   --breakpoint-wide: 100rem;
   --default-transition-timing-function: ease;
   --animate-orbit: orbit 18s linear infinite;
@@ -27,7 +28,7 @@
 
 /* Сетка продолжается за пределы контента, сохраняя шаг и центральную ось. */
 .page-grid {
-  --grid-step: min(408px, calc((max(100vw, 1120px) - var(--gutter) * 2) / 4));
+  --grid-step: clamp(96px, calc((100vw - var(--gutter) * 2) / 4), 408px);
   --grid-origin: calc(50% + var(--grid-step) / 2);
   background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cpath d='M4.5 0v9M0 4.5h9' stroke='%23606a55' stroke-width='1' opacity='.525'/%3E%3C/svg%3E")

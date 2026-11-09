@@ -12,13 +12,14 @@ const NotFound = async () => {
   return (
     <main
       id="main"
-      className="flex min-h-screen min-w-[1120px] flex-col items-center justify-center gap-[30px]"
+      tabIndex={-1}
+      className="flex min-h-svh flex-col items-center justify-center gap-5 px-(--gutter) py-8 sm:gap-[30px]"
     >
-      <Asterisk className="size-[70px] text-accent" />
-      <span className="font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] text-muted wide:text-[11px]">
+      <Asterisk className="size-12 text-accent sm:size-[70px]" />
+      <span className="text-center font-mono text-[11px] leading-[1.65] tracking-[0.035em] text-muted">
         404 / {copy.label}
       </span>
-      <h1 className="text-center text-[70px] leading-[1.15] font-normal tracking-[-4px]">
+      <h1 className="text-center text-[clamp(34px,8vw,70px)] leading-[1.15] font-normal tracking-[-0.06em]">
         {copy.title[0]}
         <br />
         {copy.title[1]}

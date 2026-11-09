@@ -190,10 +190,10 @@ export const PosterCarousel = ({
       aria-roledescription={copy.carousel}
       onKeyDown={handleKeyDown}
     >
-      <div className="mb-6 flex items-center justify-between gap-4">
+      <div className="mb-4 flex items-center justify-between gap-3 sm:mb-6 sm:gap-4">
         <Heading
           id={headingId}
-          className="text-2xl font-medium tracking-[-0.04em] sm:text-[32px]"
+          className="text-xl font-medium tracking-[-0.04em] wrap-anywhere sm:text-[32px]"
         >
           {labels.heading}
         </Heading>
@@ -279,7 +279,7 @@ export const PosterCarousel = ({
                   alt={image.alt}
                   width={image.width}
                   height={image.height}
-                  sizes="(max-width: 640px) 70vw, 640px"
+                  sizes="(max-width: 1000px) 63vw, 640px"
                   draggable={false}
                 />
               </button>
@@ -289,7 +289,7 @@ export const PosterCarousel = ({
       </div>
 
       <div
-        className="mt-5 flex items-baseline justify-between gap-5 text-base"
+        className="mt-3 flex items-baseline justify-between gap-3 text-sm sm:mt-5 sm:gap-5 sm:text-base"
         aria-live="polite"
         aria-atomic="true"
       >
