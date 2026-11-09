@@ -46,7 +46,7 @@ const RootLayout = ({
     >
       <body className="font-sans text-base leading-[normal] text-ink antialiased selection:bg-accent selection:text-page has-[dialog[open]]:overflow-hidden [&_a]:[-webkit-tap-highlight-color:transparent] [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-[7px] [&_a:focus-visible]:outline-accent [&_button]:cursor-pointer [&_button]:[-webkit-tap-highlight-color:transparent] [&_button:disabled]:cursor-default [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-[7px] [&_button:focus-visible]:outline-accent">
         <a
-          className="fixed top-2.5 left-5 z-100 -translate-y-[200%] bg-accent px-5 py-3 text-page focus:translate-y-0"
+          className="fixed top-2.5 left-5 z-100 translate-y-[-200%] bg-accent px-5 py-3 text-page focus:translate-y-0"
           href="#main"
         >
           К содержимому
