@@ -42,7 +42,7 @@ const RootLayout = ({
     <html
       lang="ru"
       data-scroll-behavior="smooth"
-      className="scroll-smooth scroll-pt-10 bg-page scheme-dark [--gutter:64px] motion-reduce:scroll-auto wide:[--gutter:80px]"
+      className="scroll-smooth scroll-pt-[calc(var(--site-header-height)+1rem)] bg-page scheme-dark [--gutter:64px] [--site-header-height:84px] motion-reduce:scroll-auto wide:[--gutter:80px]"
     >
       <body className="font-sans text-base leading-[normal] text-ink antialiased selection:bg-accent selection:text-page has-[dialog[open]]:overflow-hidden [&_a]:[-webkit-tap-highlight-color:transparent] [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-[7px] [&_a:focus-visible]:outline-accent [&_button]:cursor-pointer [&_button]:[-webkit-tap-highlight-color:transparent] [&_button:disabled]:cursor-default [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-[7px] [&_button:focus-visible]:outline-accent">
         <a

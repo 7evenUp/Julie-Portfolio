@@ -41,7 +41,7 @@ const ProjectPage = async ({
       className={cn(
         "relative isolate overflow-clip bg-page",
         project.galleryLayout === "carousel"
-          ? "[--gutter:20px] sm:[--gutter:32px] lg:[--gutter:64px] max-sm:[&>header>a]:shrink-0 max-sm:[&>header>a]:text-[18px] max-sm:[&>header_nav>a:first-child]:hidden max-sm:[&>header_nav>a:last-child]:gap-2 max-sm:[&>header_nav>a:last-child]:px-3"
+          ? "[--gutter:20px] sm:[--gutter:32px] lg:[--gutter:64px]"
           : "min-w-[1120px]",
       )}
     >

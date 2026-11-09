@@ -15,11 +15,11 @@ export const ProjectArch = () => {
   return (
     <section
       id="project-arch"
-      className="relative left-1/2 isolate min-h-0 w-screen max-w-[1920px] flex-1 -translate-x-1/2 overflow-clip @container-size [--arch-base-radius:min(clamp(320px,28.5vw,530px),80cqh)] [--arch-radius:calc(var(--arch-base-radius)*0.86)] [--card-size:calc(var(--arch-base-radius)*0.44)]"
+      className="relative isolate min-h-0 w-screen max-w-[1920px] flex-1 overflow-clip @container-size [--arch-base-radius:min(46vw,calc((100cqh-76px)*0.89))] [--arch-radius:calc(var(--arch-base-radius)*0.86)] [--card-size:calc(var(--arch-base-radius)*0.44)] max-md:-ml-(--gutter) md:left-1/2 md:-translate-x-1/2 md:[--arch-base-radius:min(clamp(380px,34vw,630px),89cqh)]"
       aria-label="Анимированная арка проектов"
       style={{ "--arch-duration": `${arch.durationSeconds}s` } as CSSProperties}
     >
-      <div className="absolute inset-0 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-2 after:h-12 after:bg-[linear-gradient(transparent,var(--color-page))]">
+      <div className="absolute inset-0 max-md:bottom-[76px] max-md:overflow-clip after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-2 after:h-12 after:bg-[linear-gradient(transparent,var(--color-page))]">
         <div
           className="absolute bottom-0 left-1/2 size-0 animate-arch-travel transform-[rotate(-90deg)] will-change-transform"
           aria-hidden="true"
@@ -34,29 +34,28 @@ export const ProjectArch = () => {
                 } as CSSProperties
               }
             >
-              <div className="relative size-full overflow-hidden rounded-[26px] bg-[#34382f] shadow-[0_12px_28px_#0002]">
+              <div className="relative size-full overflow-hidden rounded-[clamp(14px,3.5vw,26px)] bg-[#34382f] shadow-[0_12px_28px_#0002]">
                 <Image
                   className="size-full object-cover"
                   src={item.image}
                   alt=""
                   width={400}
                   height={400}
-                  sizes="(min-width: 1860px) 234px, (min-width: 1123px) 12.54vw, 141px"
+                  sizes="(max-width: 767px) 20.24vw, (max-width: 1118px) 168px, (max-width: 1853px) 14.96vw, 278px"
                 />
               </div>
             </div>
           ))}
         </div>
-
-        <div className="absolute bottom-[clamp(24px,4svh,48px)] left-1/2 z-3 min-w-[340px] -translate-x-1/2 text-center">
-          <a
-            href="#work"
-            className="inline-flex items-center justify-center gap-6 rounded-[40px] border border-accent bg-accent px-[25px] py-[19px] text-xs font-semibold text-[#20251a] transition-[background,transform] duration-250 hover:-translate-y-[3px] hover:bg-[#e3ffac]"
-          >
-            Посмотреть все проекты <ArrowDown className="size-[18px]" />
-          </a>
-        </div>
       </div>
+
+      <a
+        href="#work"
+        className="glass-button absolute bottom-5 left-1/2 z-3 -translate-x-1/2 border border-white/15 px-5 backdrop-blur-xl md:bottom-[clamp(24px,4svh,48px)]"
+      >
+        <ArrowDown className="size-3.5 sm:size-[18px]" />
+        Посмотреть все проекты
+      </a>
     </section>
   )
 }

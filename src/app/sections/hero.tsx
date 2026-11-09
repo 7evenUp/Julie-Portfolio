@@ -11,7 +11,7 @@ import { site } from "@/content/site"
 const Hero = () => {
   return (
     <section
-      className="relative mx-auto flex h-[calc(100svh-84px)] w-[calc(100%-var(--gutter)*2)] max-w-[1632px] flex-col"
+      className="relative mx-auto flex h-[calc(100svh-var(--site-header-height))] min-h-[520px] w-[calc(100%-var(--gutter)*2)] max-w-[1632px] flex-col"
       aria-labelledby="hero-title"
     >
       <div className="relative z-2 grid shrink-0 grid-cols-[1fr_2fr] items-center pt-[clamp(24px,3svh,42px)] pb-4">

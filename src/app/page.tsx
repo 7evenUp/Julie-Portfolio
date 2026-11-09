@@ -41,29 +41,31 @@ const Home = () => {
   }
 
   return (
-    <PageMotion>
-      <div
-        className="page-grid pointer-events-none absolute inset-0 -z-1"
-        aria-hidden="true"
-      />
-
+    <>
       <Header />
 
-      <main id="main">
-        <Hero />
-        <Work />
-        <Contact />
-      </main>
+      <PageMotion>
+        <div
+          className="page-grid pointer-events-none absolute inset-0 -z-1"
+          aria-hidden="true"
+        />
 
-      <Footer />
+        <main id="main">
+          <Hero />
+          <Work />
+          <Contact />
+        </main>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
-    </PageMotion>
+        <Footer />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      </PageMotion>
+    </>
   )
 }
 

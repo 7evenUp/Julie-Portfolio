@@ -16,33 +16,42 @@ export const Contact = () => {
 
   return (
     <section
-      className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-[65px] pb-[67px]"
-      id="contact"
-      aria-labelledby="contact-title"
+      className="relative ml-[var(--contact-gutter)] w-[calc(min(100%,100dvw)-var(--contact-gutter)*2)] max-w-[1632px] pt-[65px] pb-[67px] [--contact-gutter:20px] sm:[--contact-gutter:40px] min-[1120px]:mx-auto min-[1120px]:w-[calc(100%-var(--gutter)*2)]"
+      aria-labelledby="contact"
     >
-      <div className="relative mt-[45px] flex items-center justify-between" data-reveal="contact">
+      <div
+        className="relative mt-[45px] flex items-center justify-between"
+        data-reveal="contact"
+      >
         <div className="relative">
           <h2
-            id="contact-title"
-            className="text-[clamp(54px,5.2vw,85px)] leading-[1.14] font-normal tracking-[-0.06em]"
+            id="contact"
+            className="text-[clamp(36px,6vw,54px)] leading-[1.14] font-normal tracking-[-0.06em] min-[1120px]:text-[clamp(54px,5.2vw,85px)]"
           >
             Обсудить проект
           </h2>
           <AnimatedSticker
             sticker="contact"
-            className="absolute right-0 translate-x-full top-1/2 -translate-y-1/2 w-20 rotate-12"
+            className="absolute top-1/2 right-0 hidden w-20 translate-x-full -translate-y-1/2 rotate-12 min-[1120px]:block"
           />
         </div>
-        <CatSticker cat="polite" placement="contact" />
-        <Asterisk className="mr-[47px] size-[98px] -rotate-15 text-accent" />
+
+        <div className="hidden min-[1120px]:contents">
+          <CatSticker cat="polite" placement="contact" />
+          <Asterisk className="mr-[47px] size-[98px] -rotate-15 text-accent" />
+        </div>
       </div>
 
-      <div className="mt-[50px] flex items-start justify-between">
-        <p className="text-[13px] leading-[1.9] text-[#a5ad9b] wide:text-[15px]" data-reveal="contact" data-reveal-step="1">
+      <div className="mt-7 flex flex-wrap items-start justify-between gap-6 min-[1120px]:mt-[50px]">
+        <p
+          className="text-[13px] leading-[1.9] text-[#a5ad9b] wide:text-[15px]"
+          data-reveal="contact"
+          data-reveal-step="1"
+        >
           Напиши, что нужно сделать,
           <br />и мы это сделаем.
         </p>
-        <div className="flex items-start gap-11">
+        <div className="flex flex-wrap items-start gap-x-6 gap-y-4 min-[1120px]:gap-x-11">
           {contacts.map((contact, index) =>
             contact.href ? (
               <a

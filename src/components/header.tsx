@@ -1,42 +1,39 @@
 import Link from "next/link"
 
-import { ArrowUpRight, Asterisk } from "./icons"
+import { Asterisk, ChatBubble, Grid } from "./icons"
 
 import { site } from "@/content/site"
-import { projects } from "@/content/projects"
+
+const navigation = [
+  { href: "/#work", label: "Проекты", Icon: Grid },
+  { href: "/#contact", label: "Контакты", Icon: ChatBubble },
+]
 
 export const Header = () => {
   return (
-    <header className="site-header mx-auto flex h-[84px] w-[calc(100%-var(--gutter)*2)] max-w-[1632px] items-center justify-between border-b border-line">
-      <Link
-        href="/"
-        className="group flex items-center gap-2.5 text-[24px] font-bold tracking-[-1.1px]"
-        aria-label="Юлия — на главную"
-      >
-        <Asterisk className="size-[21px] text-accent transition-transform duration-500 group-hover:rotate-90" />
-        {site.brand}
-      </Link>
+    <header className="site-header pointer-events-none sticky top-0 left-0 z-10 flex h-(--site-header-height) w-[min(100%,100dvw)] items-end justify-center px-3 max-lg:pb-2">
+      <div className="site-header-surface pointer-events-auto grid w-full max-w-[496px] grid-cols-[auto_minmax(0,1fr)] items-center gap-1.5 rounded-full border border-white/15 p-1.5 backdrop-blur-xl sm:gap-3 sm:p-2">
+        <Link
+          href="/"
+          className="group flex h-11 items-center gap-1.5 rounded-full px-1.5 text-[13px] font-bold tracking-[-0.045em] sm:h-12 sm:gap-2.5 sm:px-4 sm:text-xl"
+          aria-label="Юлия — на главную"
+        >
+          <Asterisk className="size-3.5 text-accent transition-transform duration-500 group-hover:rotate-45 sm:size-5" />
+          {site.brand}
+        </Link>
 
-      <nav
-        className="flex items-center gap-11 text-xs"
-        aria-label="Основная навигация"
-      >
-        <Link
-          href="/#work"
-          className="flex items-center gap-2 transition-colors duration-200 hover:text-accent"
+        <nav
+          className="relative grid grid-cols-2 gap-1.5 before:absolute before:top-1/4 before:-left-1.5 before:h-1/2 before:w-px before:bg-white/15 sm:gap-2 sm:before:-left-2"
+          aria-label="Основная навигация"
         >
-          Работы
-          <span className="self-start pt-0.5 font-mono text-[9px] leading-[normal] text-muted">
-            {String(projects.length).padStart(2, "0")}
-          </span>
-        </Link>
-        <Link
-          href="/#contact"
-          className="flex items-center gap-6 rounded-[30px] border border-[#54584f] px-5 py-[13px] transition-colors duration-200 hover:text-accent"
-        >
-          Обсудить проект <ArrowUpRight className="size-[15px]" />
-        </Link>
-      </nav>
+          {navigation.map(({ href, label, Icon }) => (
+            <Link key={href} href={href} className="glass-button">
+              <Icon className="size-3.5 sm:size-[18px]" />
+              {label}
+            </Link>
+          ))}
+        </nav>
+      </div>
     </header>
   )
 }
