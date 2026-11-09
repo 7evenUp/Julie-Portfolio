@@ -19,7 +19,7 @@ export const Header = ({ language }: { language: Language }) => {
   const changeLanguage = setLanguage.bind(null, isEnglish ? "ru" : "en")
 
   return (
-    <header className="site-header bg-black/35 pointer-events-auto left-1/2 -translate-x-1/2 -translate-y-full sticky top-(--site-header-height) z-10 grid w-full max-w-[584px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1 rounded-full border border-white/15 p-1.5 sm:gap-3 sm:p-2 backdrop-blur-sm">
+    <header className="site-header bg-black/35 pointer-events-auto mx-auto -translate-y-full sticky top-(--site-header-height) z-10 grid w-full max-w-[584px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-1 rounded-full border border-white/15 p-1.5 sm:gap-3 sm:p-2 backdrop-blur-sm">
       <Link
         href="/"
         className="group flex h-11 items-center gap-1.5 rounded-full px-1.5 text-[13px] font-bold tracking-[-0.045em] sm:h-12 sm:gap-2.5 sm:px-4 sm:text-xl"
