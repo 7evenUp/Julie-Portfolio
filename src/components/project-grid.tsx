@@ -3,9 +3,11 @@ import Link from "next/link"
 
 import { ArrowUpRight } from "./icons"
 
-import { projects } from "@/content/projects"
+import { categoryLabels, getProjects } from "@/content/projects"
+import { siteCopy } from "@/content/site"
 
 import type { Project } from "@/content/projects"
+import type { Language } from "@/lib/language"
 
 import { cn } from "@/lib/cn"
 
@@ -20,7 +22,17 @@ const projectLayouts: Record<string, string> = {
   forma: "col-start-7 col-end-13 row-start-3 pt-40",
 }
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ProjectCard = ({
+  project,
+  number,
+  language,
+}: {
+  project: Project
+  number: number
+  language: Language
+}) => {
+  const category = categoryLabels[language][project.category]
+
   return (
     <article className={cn("relative min-w-0", projectLayouts[project.slug])}>
       <Link
@@ -28,7 +40,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         scroll={false}
         className="group block"
         data-reveal="project"
-        aria-label={`${project.title} — подробнее о проекте`}
+        aria-label={`${project.title} — ${siteCopy[language].project.more}`}
       >
         <div
           className="relative isolate overflow-hidden"
@@ -43,8 +55,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             sizes={project.layout === "portrait" ? "28vw" : "60vw"}
           />
           <span className="absolute top-[13px] left-[15px] -translate-y-[5px] bg-[#11180fc9] px-[7px] py-1 font-mono text-[7px] leading-[1.65] font-normal tracking-[0.035em] text-[#f5f7eb] opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 wide:text-[11px]">
-            {String(projects.indexOf(project) + 1).padStart(2, "0")} /{" "}
-            {project.category}
+            {String(number).padStart(2, "0")} / {category}
           </span>
           <span className="absolute right-[17px] bottom-[17px] grid size-10 translate-y-[60px] place-items-center rounded-full bg-page opacity-0 transition-[background,transform] duration-300 group-hover:translate-y-0 group-hover:bg-accent group-hover:text-page group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:bg-accent group-focus-visible:text-page group-focus-visible:opacity-100">
             <ArrowUpRight className="size-[17px]" />
@@ -61,7 +72,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             </p>
           </div>
           <span className="max-w-[35%] shrink-0 text-right text-[13px] leading-[1.65] font-normal text-muted wide:text-sm">
-            {project.category}
+            {category}
           </span>
         </div>
       </Link>
@@ -76,11 +87,16 @@ const ProjectCard = ({ project }: { project: Project }) => {
   )
 }
 
-export const ProjectGrid = () => {
+export const ProjectGrid = ({ language }: { language: Language }) => {
   return (
     <div className="grid grid-cols-12 gap-x-6 pt-30 pb-[90px] wide:pb-[115px]">
-      {projects.map((project) => (
-        <ProjectCard project={project} key={project.slug} />
+      {getProjects(language).map((project, index) => (
+        <ProjectCard
+          key={project.slug}
+          project={project}
+          number={index + 1}
+          language={language}
+        />
       ))}
     </div>
   )

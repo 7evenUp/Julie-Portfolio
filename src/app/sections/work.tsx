@@ -2,7 +2,11 @@ import { AnimatedSticker } from "@/components/animated-sticker"
 import { CatSticker } from "@/components/cat-sticker"
 import { ProjectGrid } from "@/components/project-grid"
 
-const Work = () => {
+import { siteCopy } from "@/content/site"
+
+import type { Language } from "@/lib/language"
+
+const Work = ({ language }: { language: Language }) => {
   return (
     <section
       className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-[94px] pb-10"
@@ -19,11 +23,11 @@ const Work = () => {
           id="work"
           className="text-[clamp(54px,5.2vw,85px)] leading-[1.14] font-normal tracking-[-0.06em]"
         >
-          Проекты
+          {siteCopy[language].header.projects}
         </h2>
       </div>
 
-      <ProjectGrid />
+      <ProjectGrid language={language} />
     </section>
   )
 }

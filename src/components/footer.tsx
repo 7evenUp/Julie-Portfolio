@@ -1,8 +1,12 @@
 import { ArrowUpRight, Asterisk, Globe } from "./icons"
 
-import { site } from "@/content/site"
+import { site, siteCopy } from "@/content/site"
 
-export const Footer = () => {
+import type { Language } from "@/lib/language"
+
+export const Footer = ({ language }: { language: Language }) => {
+  const copy = siteCopy[language]
+
   return (
     <footer className="w-full font-mono text-[8px] leading-[1.65] font-normal tracking-[0.035em] text-[#7a866c] wide:text-[11px] bg-line">
       <div className="max-w-[1632px] flex items-center justify-between mx-auto w-[calc(100%-var(--gutter)*2)] h-[95px]">
@@ -13,9 +17,9 @@ export const Footer = () => {
           {site.brand}
           <Asterisk className="size-3 text-accent" />
         </a>
-        <span>© 2026 Юлия</span>
+        <span>© 2026 {copy.formalName}</span>
         <a href="#main" className="flex items-center gap-3">
-          Наверх <ArrowUpRight className="size-3" />
+          {copy.backToTop} <ArrowUpRight className="size-3" />
         </a>
         <Globe className="h-7 w-12 text-[#a6b296]" />
       </div>

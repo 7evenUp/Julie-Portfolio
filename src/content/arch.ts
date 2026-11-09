@@ -1,4 +1,4 @@
-import { getProject } from "./projects"
+import { projects } from "./projects"
 
 /**
  * Six real projects in the first-screen carousel, in their travel order.
@@ -21,6 +21,9 @@ export const arch = {
       id: "midnight-session",
       image: "/images/projects/midnight-session/arch.webp",
     },
-    { id: "poster-studies", image: getProject("poster-studies")!.cover.src },
+    {
+      id: "poster-studies",
+      image: projects.find(({ slug }) => slug === "poster-studies")!.cover.src,
+    },
   ],
 }

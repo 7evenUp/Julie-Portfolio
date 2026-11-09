@@ -2,9 +2,12 @@ import { AnimatedSticker } from "./animated-sticker"
 import { Asterisk } from "./icons"
 import { CatSticker } from "./cat-sticker"
 
-import { site } from "@/content/site"
+import { site, siteCopy } from "@/content/site"
 
-export const Contact = () => {
+import type { Language } from "@/lib/language"
+
+export const Contact = ({ language }: { language: Language }) => {
+  const copy = siteCopy[language].contact
   const contacts = [
     {
       label: "Telegram",
@@ -32,7 +35,7 @@ export const Contact = () => {
             id="contact"
             className="text-[clamp(36px,6vw,54px)] leading-[1.14] font-normal tracking-[-0.06em] min-[1120px]:text-[clamp(54px,5.2vw,85px)]"
           >
-            Обсудить проект
+            {copy.title}
           </h2>
           <AnimatedSticker
             sticker="contact"
@@ -52,8 +55,9 @@ export const Contact = () => {
           data-reveal="contact"
           data-reveal-step="1"
         >
-          Напиши, что нужно сделать,
-          <br />и мы это сделаем.
+          {copy.invitation[0]}
+          <br />
+          {copy.invitation[1]}
         </p>
         <div className="flex flex-wrap items-start gap-x-6 gap-y-4 min-[1120px]:gap-x-11">
           {contacts.map((contact, index) =>
@@ -86,7 +90,7 @@ export const Contact = () => {
               >
                 <span>{contact.label}</span>
                 <span className="mt-[9px] flex items-center gap-3.5 font-mono text-[8px] leading-[1.65] font-normal tracking-[0.035em] text-[#6e7961]">
-                  Скоро
+                  {copy.comingSoon}
                 </span>
               </div>
             ),

@@ -1,10 +1,15 @@
 import { ImageResponse } from "next/og"
 
-export const alt = "Юлия — веб- и графический дизайнер"
+import { siteCopy } from "@/content/site"
+
+import { getLanguage } from "@/lib/language"
+
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-export default function Image() {
+export default async function Image() {
+  const copy = siteCopy[await getLanguage()].socialImage
+
   return new ImageResponse(
     <div
       style={{
@@ -34,13 +39,13 @@ export default function Image() {
           lineHeight: 1.12,
         }}
       >
-        <span>Дизайн сайтов</span>
-        <span style={{ color: "#d2fb78" }}>и графики</span>
+        <span>{copy.title[0]}</span>
+        <span style={{ color: "#d2fb78" }}>{copy.title[1]}</span>
       </div>
       <div style={{ display: "flex", fontSize: 22, color: "#a3a69f" }}>
-        Веб-дизайн / Графика / Свадебная полиграфия
+        {copy.subtitle}
       </div>
     </div>,
-    size,
+    { ...size, headers: { "Cache-Control": "private, no-store" } },
   )
 }

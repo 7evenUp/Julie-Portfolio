@@ -7,6 +7,7 @@ import { ArrowDown } from "./icons"
 
 import type { CSSProperties, KeyboardEvent, PointerEvent } from "react"
 import type { Project } from "@/content/projects"
+import type { Language } from "@/lib/language"
 
 import { cn } from "@/lib/cn"
 
@@ -22,30 +23,54 @@ type DragSession = {
 }
 
 const carouselLabels = {
-  posters: {
-    heading: "Серия постеров",
-    previous: "Предыдущий постер",
-    next: "Следующий постер",
-    stage: "Постеры. Используйте стрелки влево и вправо для переключения",
-    item: "Постер",
+  ru: {
+    carousel: "карусель",
+    of: "из",
+    posters: {
+      heading: "Серия постеров",
+      previous: "Предыдущий постер",
+      next: "Следующий постер",
+      stage: "Постеры. Используйте стрелки влево и вправо для переключения",
+      item: "Постер",
+    },
+    banners: {
+      heading: "Серия баннеров",
+      previous: "Предыдущий баннер",
+      next: "Следующий баннер",
+      stage: "Баннеры. Используйте стрелки влево и вправо для переключения",
+      item: "Баннер",
+    },
   },
-  banners: {
-    heading: "Серия баннеров",
-    previous: "Предыдущий баннер",
-    next: "Следующий баннер",
-    stage: "Баннеры. Используйте стрелки влево и вправо для переключения",
-    item: "Баннер",
+  en: {
+    carousel: "carousel",
+    of: "of",
+    posters: {
+      heading: "Poster series",
+      previous: "Previous poster",
+      next: "Next poster",
+      stage: "Posters. Use the left and right arrow keys to browse",
+      item: "Poster",
+    },
+    banners: {
+      heading: "Banner series",
+      previous: "Previous banner",
+      next: "Next banner",
+      stage: "Banners. Use the left and right arrow keys to browse",
+      item: "Banner",
+    },
   },
 }
 
 export const PosterCarousel = ({
   images,
+  language,
   inModal = false,
   kind = "posters",
 }: {
   images: Project["gallery"]
+  language: Language
   inModal?: boolean
-  kind?: keyof typeof carouselLabels
+  kind?: "posters" | "banners"
 }) => {
   const [activeIndex, setActiveIndex] = useState(0)
   const [dragOffset, setDragOffset] = useState(0)
@@ -58,7 +83,8 @@ export const PosterCarousel = ({
   const lastIndex = images.length - 1
   const position = Math.max(0, Math.min(lastIndex, activeIndex - dragOffset))
   const activeImage = images[activeIndex]
-  const labels = carouselLabels[kind]
+  const copy = carouselLabels[language]
+  const labels = copy[kind]
   const aspectRatio = Math.max(
     0,
     ...images.map((image) => image.width / image.height),
@@ -161,7 +187,7 @@ export const PosterCarousel = ({
   return (
     <section
       aria-labelledby={headingId}
-      aria-roledescription="карусель"
+      aria-roledescription={copy.carousel}
       onKeyDown={handleKeyDown}
     >
       <div className="mb-6 flex items-center justify-between gap-4">
@@ -270,7 +296,7 @@ export const PosterCarousel = ({
         <p className="min-w-0">{activeImage.title ?? activeImage.alt}</p>
         <span className="shrink-0 text-muted tabular-nums">
           <span className="sr-only">{labels.item} </span>
-          {activeIndex + 1} из {images.length}
+          {activeIndex + 1} {copy.of} {images.length}
         </span>
       </div>
     </section>

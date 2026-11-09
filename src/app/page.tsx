@@ -7,31 +7,29 @@ import PageMotion from "@/components/page-motion"
 import Hero from "./sections/hero"
 import Work from "./sections/work"
 
-import { site, siteUrl, description } from "@/content/site"
+import { site, siteCopy, siteUrl } from "@/content/site"
+
+import { getLanguage } from "@/lib/language"
 
 export const metadata: Metadata = {
   ...(siteUrl ? { alternates: { canonical: "/" } } : {}),
 }
 
-const Home = () => {
+const Home = async () => {
+  const language = await getLanguage()
+  const copy = siteCopy[language]
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     ...(siteUrl ? { url: siteUrl } : {}),
-    name: "Юлия — веб- и графический дизайнер",
-    description,
-    inLanguage: "ru-RU",
+    name: copy.title,
+    description: copy.description,
+    inLanguage: language,
     mainEntity: {
       "@type": "Person",
-      name: site.name,
-      jobTitle: site.role,
-      knowsAbout: [
-        "Веб-дизайн",
-        "Графический дизайн",
-        "Дизайн баннеров",
-        "Дизайн афиш",
-        "Свадебная полиграфия",
-      ],
+      name: copy.name,
+      jobTitle: copy.role,
+      knowsAbout: copy.expertise,
       ...(siteUrl ? { url: siteUrl } : {}),
       ...(site.telegram || site.behance
         ? { sameAs: [site.telegram, site.behance].filter(Boolean) }
@@ -41,7 +39,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header language={language} />
 
       <PageMotion>
         <div
@@ -50,12 +48,12 @@ const Home = () => {
         />
 
         <main id="main">
-          <Hero />
-          <Work />
-          <Contact />
+          <Hero language={language} />
+          <Work language={language} />
+          <Contact language={language} />
         </main>
 
-        <Footer />
+        <Footer language={language} />
 
         <script
           type="application/ld+json"

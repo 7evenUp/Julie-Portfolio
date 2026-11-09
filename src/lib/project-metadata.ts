@@ -1,13 +1,17 @@
 import type { Metadata } from "next"
+
 import { getProject } from "@/content/projects"
 import { siteUrl, site } from "@/content/site"
+
+import { getLanguage } from "./language"
 
 export async function projectMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
-  const project = getProject((await params).slug)
+  const language = await getLanguage()
+  const project = getProject((await params).slug, language)
   if (!project) return {}
   return {
     title: project.title,
@@ -17,7 +21,7 @@ export async function projectMetadata({
       : {}),
     openGraph: {
       type: "website",
-      locale: "ru_RU",
+      locale: language === "ru" ? "ru_RU" : "en_GB",
       siteName: site.brand,
       title: project.title,
       description: project.summary,

@@ -1,5 +1,3 @@
-"use client"
-
 import Image from "next/image"
 
 import { ArrowDown } from "./icons"
@@ -11,12 +9,18 @@ import type { CSSProperties } from "react"
 // Две одинаковые половины обеспечивают непрерывный цикл поворота на 180°.
 const wheelItems = [...arch.items, ...arch.items]
 
-export const ProjectArch = () => {
+export const ProjectArch = ({
+  label,
+  linkLabel,
+}: {
+  label: string
+  linkLabel: string
+}) => {
   return (
     <section
       id="project-arch"
       className="relative isolate min-h-0 w-screen max-w-[1920px] flex-1 overflow-clip @container-size [--arch-base-radius:min(46vw,calc((100cqh-76px)*0.89))] [--arch-radius:calc(var(--arch-base-radius)*0.86)] [--card-size:calc(var(--arch-base-radius)*0.44)] max-md:-ml-(--gutter) md:left-1/2 md:-translate-x-1/2 md:[--arch-base-radius:min(clamp(380px,34vw,630px),89cqh)]"
-      aria-label="Анимированная арка проектов"
+      aria-label={label}
       style={{ "--arch-duration": `${arch.durationSeconds}s` } as CSSProperties}
     >
       <div className="absolute inset-0 max-md:bottom-[76px] max-md:overflow-clip after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:z-2 after:h-12 after:bg-[linear-gradient(transparent,var(--color-page))]">
@@ -54,7 +58,7 @@ export const ProjectArch = () => {
         className="glass-button absolute bottom-5 left-1/2 z-3 -translate-x-1/2 border border-white/15 px-5 backdrop-blur-xl md:bottom-[clamp(24px,4svh,48px)]"
       >
         <ArrowDown className="size-3.5 sm:size-[18px]" />
-        Посмотреть все проекты
+        {linkLabel}
       </a>
     </section>
   )

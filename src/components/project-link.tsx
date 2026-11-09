@@ -2,9 +2,11 @@ import { cn } from "@/lib/cn"
 
 export const ProjectLink = ({
   href,
+  label,
   className,
 }: {
   href: string
+  label: string
   className?: string
 }) => {
   return (
@@ -31,7 +33,7 @@ export const ProjectLink = ({
           ))}
         </span>
       </span>
-      <span>Посмотреть проект</span>
+      <span>{label}</span>
     </a>
   )
 }

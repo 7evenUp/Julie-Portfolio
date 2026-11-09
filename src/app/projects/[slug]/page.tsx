@@ -4,12 +4,12 @@ import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { ProjectDetail } from "@/components/project-detail"
 
-import { projects, getProject } from "@/content/projects"
-import { site, siteUrl } from "@/content/site"
+import { categoryLabels, getProject } from "@/content/projects"
+import { siteCopy, siteUrl } from "@/content/site"
 
 import { cn } from "@/lib/cn"
+import { getLanguage } from "@/lib/language"
 
-export const generateStaticParams = () => projects.map(({ slug }) => ({ slug }))
 export { projectMetadata as generateMetadata } from "@/lib/project-metadata"
 
 const ProjectPage = async ({
@@ -17,7 +17,9 @@ const ProjectPage = async ({
 }: {
   params: Promise<{ slug: string }>
 }) => {
-  const project = getProject((await params).slug)
+  const language = await getLanguage()
+  const copy = siteCopy[language]
+  const project = getProject((await params).slug, language)
   if (!project) notFound()
 
   const jsonLd = {
@@ -25,9 +27,9 @@ const ProjectPage = async ({
     "@type": "CreativeWork",
     name: project.title,
     description: project.summary,
-    genre: project.category,
-    inLanguage: "ru-RU",
-    creator: { "@type": "Person", name: site.name },
+    genre: categoryLabels[language][project.category],
+    inLanguage: language,
+    creator: { "@type": "Person", name: copy.name },
     ...(siteUrl
       ? {
           url: `${siteUrl}/projects/${project.slug}`,
@@ -45,7 +47,7 @@ const ProjectPage = async ({
           : "min-w-[1120px]",
       )}
     >
-      <Header />
+      <Header language={language} />
 
       <main id="main" className="mx-auto mt-[45px] max-w-[1100px] pb-[60px]">
         <Link
@@ -57,9 +59,9 @@ const ProjectPage = async ({
               : "ml-11",
           )}
         >
-          ← Все проекты
+          ← {copy.project.all}
         </Link>
-        <ProjectDetail project={project} className="pt-[35px]" />
+        <ProjectDetail project={project} language={language} className="pt-[35px]" />
 
         <script
           type="application/ld+json"

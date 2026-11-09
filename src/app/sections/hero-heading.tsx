@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react"
 
 import { heroTypewriter } from "@/content/site"
 
-const { words, typingMs, deletingMs, holdMs, emptyMs, initialHoldMs } =
+const { typingMs, deletingMs, holdMs, emptyMs, initialHoldMs } =
   heroTypewriter
 
-const DesignLabel = () => (
+const DesignLabel = ({ text }: { text: string }) => (
   <span className="group relative mr-6 bg-accent font-bold text-black">
-    Дизайн{" "}
+    {text}{" "}
     <span className="absolute -top-2 -left-2 size-4 border-t border-l border-accent transition-transform group-hover:scale-[115%]" />
     <span className="absolute -bottom-2 -left-2 size-4 border-b border-l border-accent transition-transform group-hover:scale-[115%]" />
     <span className="absolute -top-2 -right-2 size-4 border-t border-r border-accent transition-transform group-hover:scale-[115%]" />
@@ -17,7 +17,7 @@ const DesignLabel = () => (
   </span>
 )
 
-const HeroHeading = () => {
+const HeroHeading = ({ design, words }: { design: string; words: string[] }) => {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const [isRunning, setIsRunning] = useState(false)
   const [isReducedMotion, setIsReducedMotion] = useState(false)
@@ -107,7 +107,7 @@ const HeroHeading = () => {
       id="hero-title"
       className="relative grid w-full text-[clamp(56px,4.85vw,92px)] leading-[1.12] font-normal tracking-[-0.065em]"
     >
-      <span className="sr-only">Дизайн {words.join(", ")}</span>
+      <span className="sr-only">{design} {words.join(", ")}</span>
 
       {/* Все фразы резервируют место: при печати не сдвигаются описание и арка. */}
       {words.map((phrase, index) => (
@@ -116,7 +116,7 @@ const HeroHeading = () => {
           aria-hidden="true"
           className="invisible pointer-events-none select-none [grid-area:1/1]"
         >
-          <span className="font-bold">Дизайн </span> {phrase.slice(0, -1)}
+          <span className="mr-6 font-bold">{design}{" "}</span> {phrase.slice(0, -1)}
           <span className="whitespace-nowrap">
             {phrase.slice(-1)}
             <span className="hero-caret" />
@@ -125,7 +125,7 @@ const HeroHeading = () => {
       ))}
 
       <span aria-hidden="true" className="[grid-area:1/1]">
-        <DesignLabel /> {text.slice(0, -1)}
+        <DesignLabel text={design} /> {text.slice(0, -1)}
         <span className="whitespace-nowrap">
           {text.slice(-1)}
           <span className="hero-caret" />

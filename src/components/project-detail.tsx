@@ -5,25 +5,29 @@ import { ArrowUpRight } from "./icons"
 import { PosterCarousel } from "./poster-carousel"
 import { ProjectLink } from "./project-link"
 
-import { projects } from "@/content/projects"
+import { categoryLabels, getNextProject } from "@/content/projects"
+import { siteCopy } from "@/content/site"
 
 import type { Project } from "@/content/projects"
+import type { Language } from "@/lib/language"
 
 import { cn } from "@/lib/cn"
 
 type ProjectDetailProps = {
   project: Project
+  language: Language
   inModal?: boolean
   className?: string
 }
 
 export const ProjectDetail = ({
   project,
+  language,
   inModal = false,
   className,
 }: ProjectDetailProps) => {
-  const nextProject =
-    projects[(projects.indexOf(project) + 1) % projects.length]
+  const copy = siteCopy[language].project
+  const nextProject = getNextProject(project.slug, language)
   const Heading = inModal ? "h2" : "h1"
   const hasCarousel = project.galleryLayout === "carousel"
 
@@ -33,7 +37,7 @@ export const ProjectDetail = ({
     >
       <div>
         <div className="flex justify-between font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#a9b09f] wide:text-[11px]">
-          <span>{project.category}</span>
+          <span>{categoryLabels[language][project.category]}</span>
         </div>
         <Heading
           id="project-title"
@@ -50,7 +54,7 @@ export const ProjectDetail = ({
           {project.summary}
         </p>
         {!inModal && project.url && (
-          <ProjectLink href={project.url} className="mt-[17px]" />
+          <ProjectLink href={project.url} label={copy.view} className="mt-[17px]" />
         )}
       </div>
 
@@ -74,7 +78,7 @@ export const ProjectDetail = ({
       >
         <div>
           <span className="font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#7e8c70] wide:text-[11px]">
-            О проекте
+            {copy.about}
           </span>
           <p
             className={cn(
@@ -87,7 +91,7 @@ export const ProjectDetail = ({
         </div>
         <div>
           <span className="font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#7e8c70] wide:text-[11px]">
-            Что сделано
+            {copy.services}
           </span>
           <ul className="mt-[15px] list-none p-0">
             {project.services.map((service) => (
@@ -109,6 +113,7 @@ export const ProjectDetail = ({
         <PosterCarousel
           key={project.slug}
           images={project.gallery}
+          language={language}
           inModal={inModal}
           kind={project.category === "Баннеры" ? "banners" : "posters"}
         />
@@ -157,7 +162,7 @@ export const ProjectDetail = ({
       >
         <div>
           <span className="font-mono text-[9px] leading-[1.65] font-normal tracking-[0.035em] text-[#7e8c70]">
-            Следующий проект
+            {copy.next}
           </span>
           <p className="mt-2.5 text-[25px] tracking-[-0.8px]">
             {nextProject.title}

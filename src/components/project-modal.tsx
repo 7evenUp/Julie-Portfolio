@@ -10,9 +10,11 @@ import type { MouseEvent, ReactNode, SyntheticEvent } from "react"
 export const ProjectModal = ({
   children,
   projectUrl,
+  labels,
 }: {
   children: ReactNode
   projectUrl?: string
+  labels: { close: string; closeLabel: string; view: string }
 }) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const router = useRouter()
@@ -63,15 +65,15 @@ export const ProjectModal = ({
     >
       <div className="border border-[#38422e] bg-[#181c16]">
         <div className="sticky top-0 z-3 flex h-16 items-center justify-between border-b border-[#323b2b] bg-[#181c16f5] px-[35px] backdrop-blur-[16px]">
-          {projectUrl && <ProjectLink href={projectUrl} />}
+          {projectUrl && <ProjectLink href={projectUrl} label={labels.view} />}
           <button
             className="ml-auto flex shrink-0 items-center gap-5 py-2.5 pl-5 hover:text-accent"
             type="button"
             onClick={handleClose}
-            aria-label="Закрыть проект"
+            aria-label={labels.closeLabel}
           >
             <span className="font-mono text-[10px] leading-[1.65] font-normal tracking-[0.035em] wide:text-[11px]">
-              Закрыть
+              {labels.close}
             </span>
             <span
               className="relative size-[18px] before:absolute before:top-2 before:left-0 before:h-px before:w-5 before:rotate-45 before:bg-current after:absolute after:top-2 after:left-0 after:h-px after:w-5 after:-rotate-45 after:bg-current"
