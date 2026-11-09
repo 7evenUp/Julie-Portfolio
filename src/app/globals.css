@@ -39,19 +39,6 @@
       0 0 / 100% var(--grid-step);
 }
 
-.site-header-surface {
-  background:
-    radial-gradient(
-      ellipse at 50% 0%,
-      rgb(210 251 120 / 0.12),
-      transparent 65%
-    ),
-    rgb(34 37 34 / 0.85);
-  box-shadow:
-    inset 0 1px 1px rgb(255 255 255 / 0.14),
-    0 10px 30px rgb(0 0 0 / 0.28);
-}
-
 /* Порядок 3D-преобразований важен для реакции скульптуры на указатель. */
 .sculpture-scene {
   --pointer-x: 0deg;
