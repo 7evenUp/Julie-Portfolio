@@ -5,11 +5,10 @@ import LanguageSwitch from "./language-switch"
 
 import { site, siteCopy } from "@/content/site"
 
-import type { Language } from "@/lib/language"
+import { getLanguage, setLanguage } from "@/lib/language"
 
-import { setLanguage } from "@/lib/language"
-
-export const Header = ({ language }: { language: Language }) => {
+export const Header = async () => {
+  const language = await getLanguage()
   const copy = siteCopy[language].header
   const navigation = [
     { href: "/#work", label: copy.projects, Icon: Grid },

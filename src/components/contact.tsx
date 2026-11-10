@@ -4,9 +4,10 @@ import { CatSticker } from "./cat-sticker"
 
 import { site, siteCopy } from "@/content/site"
 
-import type { Language } from "@/lib/language"
+import { getLanguage } from "@/lib/language"
 
-export const Contact = ({ language }: { language: Language }) => {
+export const Contact = async () => {
+  const language = await getLanguage()
   const copy = siteCopy[language].contact
   const contacts = [
     {

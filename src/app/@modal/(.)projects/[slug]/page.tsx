@@ -20,7 +20,7 @@ export default async function InterceptedProject({
   if (!project) notFound()
   return (
     <ProjectModal projectUrl={project.url} labels={siteCopy[language].project}>
-      <ProjectDetail project={project} language={language} inModal />
+      <ProjectDetail project={project} inModal />
     </ProjectModal>
   )
 }

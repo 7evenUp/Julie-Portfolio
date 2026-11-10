@@ -8,9 +8,10 @@ import { ProjectArch } from "@/components/project-arch"
 
 import { site, siteCopy } from "@/content/site"
 
-import type { Language } from "@/lib/language"
+import { getLanguage } from "@/lib/language"
 
-const Hero = ({ language }: { language: Language }) => {
+const Hero = async () => {
+  const language = await getLanguage()
   const copy = siteCopy[language].hero
 
   return (

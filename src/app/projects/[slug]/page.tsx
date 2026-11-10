@@ -39,7 +39,7 @@ const ProjectPage = async ({
 
   return (
     <div className="relative isolate bg-page">
-      <Header language={language} />
+      <Header />
 
       <main
         id="main"
@@ -54,7 +54,6 @@ const ProjectPage = async ({
         </Link>
         <ProjectDetail
           project={project}
-          language={language}
           className="pt-3 sm:pt-5 lg:pt-[29px]"
         />
 

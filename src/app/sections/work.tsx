@@ -4,9 +4,11 @@ import { ProjectGrid } from "@/components/project-grid"
 
 import { siteCopy } from "@/content/site"
 
-import type { Language } from "@/lib/language"
+import { getLanguage } from "@/lib/language"
 
-const Work = ({ language }: { language: Language }) => {
+const Work = async () => {
+  const language = await getLanguage()
+
   return (
     <section
       className="relative mx-auto w-[calc(100%-var(--gutter)*2)] max-w-[1632px] pt-14 pb-5 sm:pt-18 composition:pt-[94px] composition:pb-10"
@@ -27,7 +29,7 @@ const Work = ({ language }: { language: Language }) => {
         </h2>
       </div>
 
-      <ProjectGrid language={language} />
+      <ProjectGrid />
     </section>
   )
 }

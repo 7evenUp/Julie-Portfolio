@@ -9,23 +9,22 @@ import { categoryLabels, getNextProject } from "@/content/projects"
 import { siteCopy } from "@/content/site"
 
 import type { Project } from "@/content/projects"
-import type { Language } from "@/lib/language"
 
 import { cn } from "@/lib/cn"
+import { getLanguage } from "@/lib/language"
 
 type ProjectDetailProps = {
   project: Project
-  language: Language
   inModal?: boolean
   className?: string
 }
 
-export const ProjectDetail = ({
+export const ProjectDetail = async ({
   project,
-  language,
   inModal = false,
   className,
 }: ProjectDetailProps) => {
+  const language = await getLanguage()
   const copy = siteCopy[language].project
   const nextProject = getNextProject(project.slug, language)
   const Heading = inModal ? "h2" : "h1"

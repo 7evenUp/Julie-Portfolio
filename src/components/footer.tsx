@@ -4,9 +4,10 @@ import { ArrowUpRight, Asterisk, Globe } from "./icons"
 
 import { site, siteCopy } from "@/content/site"
 
-import type { Language } from "@/lib/language"
+import { getLanguage } from "@/lib/language"
 
-export const Footer = ({ language }: { language: Language }) => {
+export const Footer = async () => {
+  const language = await getLanguage()
   const copy = siteCopy[language]
 
   return (

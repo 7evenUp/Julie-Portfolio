@@ -1,15 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { ArrowUpRight } from "./icons"
-
 import { categoryLabels, getProjects } from "@/content/projects"
 import { siteCopy } from "@/content/site"
 
 import type { Project } from "@/content/projects"
-import type { Language } from "@/lib/language"
 
 import { cn } from "@/lib/cn"
+import { getLanguage } from "@/lib/language"
 
 // Позиции закреплены за работами: размер и отступ не зависят от их типа.
 const projectLayouts: Record<string, string> = {
@@ -30,15 +28,8 @@ const projectOrder = new Map(
   Object.keys(projectLayouts).map((slug, index) => [slug, index]),
 )
 
-const ProjectCard = ({
-  project,
-  number,
-  language,
-}: {
-  project: Project
-  number: number
-  language: Language
-}) => {
+const ProjectCard = async ({ project }: { project: Project }) => {
+  const language = await getLanguage()
   const category = categoryLabels[language][project.category]
 
   return (
@@ -51,16 +42,19 @@ const ProjectCard = ({
       <Link
         href={`/projects/${project.slug}`}
         scroll={false}
-        className="group block"
+        className="group block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         data-reveal="project"
         aria-label={`${project.title} — ${siteCopy[language].project.more}`}
       >
         <div
-          className="relative isolate overflow-hidden"
+          className="overflow-hidden"
           style={{ background: project.background }}
         >
           <Image
-            className="w-full scale-[1.002] transition-[transform,filter] duration-[800ms,600ms] ease-[cubic-bezier(0.2,0.7,0.3,1),ease] group-hover:scale-[1.04] group-hover:brightness-[1.04]"
+            className={cn(
+              "w-full motion-safe:transition-[scale] motion-safe:duration-500 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)]",
+              "motion-safe:group-hover:scale-[1.065] motion-safe:group-focus-visible:scale-[1.065]",
+            )}
             src={project.cover.src}
             alt={project.cover.alt}
             width={project.cover.width}
@@ -71,17 +65,18 @@ const ProjectCard = ({
                 : "(max-width: 639px) 90vw, (max-width: 1119px) 45vw, 50vw"
             }
           />
-          <span className="absolute top-[13px] left-[15px] -translate-y-[5px] bg-[#11180fc9] px-[7px] py-1 font-mono text-[7px] leading-[1.65] font-normal tracking-[0.035em] text-[#f5f7eb] opacity-0 transition-[opacity,transform] duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 wide:text-[11px]">
-            {String(number).padStart(2, "0")} / {category}
-          </span>
-          <span className="absolute right-3 bottom-3 grid size-9 place-items-center rounded-full bg-page transition-[background,opacity,transform] duration-300 group-hover:bg-accent group-hover:text-page group-focus-visible:bg-accent group-focus-visible:text-page composition:right-[17px] composition:bottom-[17px] composition:size-10 composition:pointer-fine:translate-y-[60px] composition:pointer-fine:opacity-0 composition:pointer-fine:group-hover:translate-y-0 composition:pointer-fine:group-hover:opacity-100 composition:pointer-fine:group-focus-visible:translate-y-0 composition:pointer-fine:group-focus-visible:opacity-100">
-            <ArrowUpRight className="size-[17px]" />
-          </span>
         </div>
 
         <div className="mt-3 flex flex-col gap-2 composition:mt-[15px] composition:flex-row composition:justify-between composition:gap-4">
           <div className="min-w-0 flex-1">
-            <h3 className="text-lg leading-[1.4] font-medium tracking-[-0.25px] wide:text-xl">
+            <h3
+              className={cn(
+                "relative w-fit text-lg leading-[1.4] font-medium tracking-[-0.25px] wide:text-xl",
+                "group-hover:text-accent group-focus-visible:text-accent motion-safe:transition-colors",
+                "after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-current",
+                "group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 motion-safe:after:transition-[scale] motion-safe:after:duration-300",
+              )}
+            >
               {project.title}
             </h3>
             <p className="mt-1 text-[15px] leading-[1.6] text-muted composition:mt-2 wide:text-base">
@@ -104,7 +99,8 @@ const ProjectCard = ({
   )
 }
 
-export const ProjectGrid = ({ language }: { language: Language }) => {
+export const ProjectGrid = async () => {
+  const language = await getLanguage()
   const projects = getProjects(language).sort(
     (a, b) =>
       (projectOrder.get(a.slug) ?? projectOrder.size) -
@@ -113,13 +109,8 @@ export const ProjectGrid = ({ language }: { language: Language }) => {
 
   return (
     <div className="grid grid-cols-1 gap-y-10 pt-8 pb-10 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:pt-12 sm:pb-16 composition:grid-cols-12 composition:gap-y-0 composition:pt-30 composition:pb-[90px] wide:pb-[115px]">
-      {projects.map((project, index) => (
-        <ProjectCard
-          key={project.slug}
-          project={project}
-          number={index + 1}
-          language={language}
-        />
+      {projects.map((project) => (
+        <ProjectCard key={project.slug} project={project} />
       ))}
     </div>
   )

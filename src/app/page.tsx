@@ -39,7 +39,7 @@ const Home = async () => {
 
   return (
     <>
-      <Header language={language} />
+      <Header />
 
       <PageMotion>
         <div
@@ -48,12 +48,12 @@ const Home = async () => {
         />
 
         <main id="main" tabIndex={-1}>
-          <Hero language={language} />
-          <Work language={language} />
-          <Contact language={language} />
+          <Hero />
+          <Work />
+          <Contact />
         </main>
 
-        <Footer language={language} />
+        <Footer />
 
         <script
           type="application/ld+json"
