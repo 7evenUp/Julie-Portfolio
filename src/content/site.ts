@@ -1,11 +1,20 @@
-/** Personal details live here. Missing contacts render as honest placeholders. */
+/** Personal details live here. */
 export const site = {
   brand: "julia.design",
   portrait: "/images/julie.jpg",
   telegram: "https://t.me/Khorolskaya_YM",
   behance: "https://www.behance.net/yuliyaho",
+  vk: "https://vk.ru/yuliyaho",
+  instagram: "https://www.instagram.com/yuliya_ho",
   developer: "https://ashel-projects.vercel.app/",
 }
+
+export const socialLinks = [
+  { label: "Behance", href: site.behance },
+  { label: "Telegram", href: site.telegram },
+  { label: "VK", href: site.vk },
+  { label: "Instagram", href: site.instagram },
+] as const
 
 export const heroTypewriter = {
   typingMs: 40,
@@ -76,8 +85,8 @@ export const siteCopy = {
     },
     contact: {
       title: "Обсудить проект",
-      invitation: ["Напиши, что нужно сделать,", "и мы это сделаем."],
-      comingSoon: "Скоро",
+      invitation: "Расскажи, что нужно сделать, и обсудим, с чего начать.",
+      telegram: "Написать в Telegram",
     },
     backToTop: "Наверх",
     developerCredit: "Разработка сайта — Ashel",
@@ -143,9 +152,9 @@ export const siteCopy = {
       viewProjects: "View all projects",
     },
     contact: {
-      title: "Let’s talk about your project",
-      invitation: ["Tell me what you need,", "and we’ll make it happen."],
-      comingSoon: "Coming soon",
+      title: "Let’s talk design",
+      invitation: "Tell me what you need, and we’ll figure out where to start.",
+      telegram: "Message me on Telegram",
     },
     backToTop: "Back to top",
     developerCredit: "Developed by Ashel",

@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
 
+import Hero from "./sections/hero"
+import Work from "./sections/work"
+
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import PageMotion from "@/components/page-motion"
-import Hero from "./sections/hero"
-import Work from "./sections/work"
 
-import { site, siteCopy, siteUrl } from "@/content/site"
+import { siteCopy, siteUrl, socialLinks } from "@/content/site"
 
 import { getLanguage } from "@/lib/language"
 
@@ -31,9 +32,7 @@ const Home = async () => {
       jobTitle: copy.role,
       knowsAbout: copy.expertise,
       ...(siteUrl ? { url: siteUrl } : {}),
-      ...(site.telegram || site.behance
-        ? { sameAs: [site.telegram, site.behance].filter(Boolean) }
-        : {}),
+      sameAs: socialLinks.map(({ href }) => href),
     },
   }
 
