@@ -39,10 +39,13 @@ export const ProjectModal = ({
     if (!isProjectRoute) return
 
     const dialog = dialogRef.current
-    dialog?.showModal()
+    if (!dialog) return
+
+    dialog.autofocus = window.matchMedia("(pointer: coarse)").matches
+    dialog.showModal()
 
     return () => {
-      dialog?.close()
+      dialog.close()
     }
   }, [isProjectRoute])
 

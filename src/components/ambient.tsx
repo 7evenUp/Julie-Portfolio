@@ -18,9 +18,15 @@ export const AmbientSculpture = ({ className }: { className?: string }) => {
           />
         ))}
       </div>
-      <span className="absolute inset-0 grid animate-star-turn place-items-center text-[44px] text-accent">
-        ✳
-      </span>
+      <svg
+        className="absolute inset-0 m-auto size-8 origin-center animate-star-turn text-accent"
+        viewBox="0 0 32 32"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M16 0v32M0 16h32M5 5l22 22M27 5 5 27" />
+      </svg>
     </div>
   )
 }

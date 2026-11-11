@@ -4,6 +4,7 @@ export const site = {
   portrait: "/images/julie.jpg",
   telegram: "https://t.me/Khorolskaya_YM",
   behance: "https://www.behance.net/yuliyaho",
+  developer: "https://ashel-projects.vercel.app/",
 }
 
 export const heroTypewriter = {
@@ -79,6 +80,7 @@ export const siteCopy = {
       comingSoon: "Скоро",
     },
     backToTop: "Наверх",
+    developerCredit: "Разработка сайта — Ashel",
     project: {
       portfolio: "Портфолио",
       fallbackTitle: "Проекты с характером",
@@ -146,6 +148,7 @@ export const siteCopy = {
       comingSoon: "Coming soon",
     },
     backToTop: "Back to top",
+    developerCredit: "Developed by Ashel",
     project: {
       portfolio: "Portfolio",
       fallbackTitle: "Projects with character",
