@@ -61,6 +61,47 @@
     translateY(calc(-1 * var(--arch-radius)));
 }
 
+.arch-wheel[data-offscreen],
+.arch-wheel:has(.arch-card-link:focus-visible),
+body:has(dialog:modal) .arch-wheel {
+  animation-play-state: paused;
+}
+
+.arch-card-position:has(.arch-card-link:focus-visible) {
+  z-index: 1;
+}
+
+.arch-card-link:focus-visible .arch-card-cover {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -3px;
+}
+
+@media (hover: hover) {
+  .arch-card-position:has(.arch-card-link:hover) {
+    z-index: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .arch-card-cover {
+    transition:
+      transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 320ms ease;
+  }
+
+  .arch-card-link:focus-visible .arch-card-cover {
+    transform: translateY(calc(-1 * var(--arch-lift))) scale(1.07);
+    box-shadow: 0 18px 36px #0006;
+  }
+
+  @media (hover: hover) {
+    .arch-card-link:hover .arch-card-cover {
+      transform: translateY(calc(-1 * var(--arch-lift))) scale(1.07);
+      box-shadow: 0 18px 36px #0006;
+    }
+  }
+}
+
 @keyframes orbit {
   from {
     transform: rotateX(-22deg) rotateZ(-22deg) rotateY(0);
